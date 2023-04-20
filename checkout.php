@@ -78,7 +78,7 @@ if (isset($_POST['order_btn'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>checkout</title>
+    <title>Proceso de compra</title>
 
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -94,7 +94,7 @@ if (isset($_POST['order_btn'])) {
 
     <div class="heading">
         <h3>Proceso de compra</h3>
-        <p> <a href="home.php">Inicio</a> / Compra </p>
+        <p> <a href="home.php" style="text-decoration: none;">Inicio</a> / Compra </p>
     </div>
 
     <section class="display-order">
@@ -116,10 +116,10 @@ if (isset($_POST['order_btn'])) {
         <?php
             }
         } else {
-            echo '<p class="empty">your cart is empty</p>';
+            echo '<p class="empty">Tú carrito está vacío</p>';
         }
         ?>
-        <div class="grand-total"> grand total : <span>$<?php echo $grand_total; ?>/-</span> </div>
+        <div class="grand-total"> Total: <span>$<?php echo $grand_total; ?>/-</span> </div>
 
     </section>
 
@@ -133,11 +133,11 @@ if (isset($_POST['order_btn'])) {
                     <input type="text" name="name" required placeholder="Ingresa tu nombre">
                 </div>
                 <div class="inputBox">
-                    <span>your number :</span>
+                    <span>Teléfono:</span>
                     <input type="number" name="number" required placeholder="Ingresa tu número">
                 </div>
                 <div class="inputBox">
-                    <span>your email :</span>
+                    <span>Email:</span>
                     <input type="email" name="email" required placeholder="Ingresa tu correo">
                 </div>
                 <div class="inputBox">
@@ -148,16 +148,16 @@ if (isset($_POST['order_btn'])) {
                     </select>
                 </div>
                 <div class="inputBox">
-                    <span>Dirección :</span>
-                    <input type="number" min="0" name="flat" required placeholder="e.g. flat no.">
+                    <span>Dirección:</span>
+                    <input type="text" name="flat" required placeholder="Ejemplo: 11 Avenida">
                 </div>
                 <div class="inputBox">
-                    <span>Departamento :</span>
-                    <input type="text" name="state" required placeholder="e.g. maharashtra">
+                    <span>Departamento:</span>
+                    <input type="text" name="state" required placeholder="Ejemplo: Santa Ana">
                 </div>
                 <div class="inputBox">
-                    <span>Municipio :</span>
-                    <input type="text" name="city" required placeholder="e.g. mumbai">
+                    <span>Municipio:</span>
+                    <input type="text" name="city" required placeholder="Ejemplo: Santa Ana">
                 </div>
             </div>
             <input type="submit" value="order now" class="btn" name="order_btn">

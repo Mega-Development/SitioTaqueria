@@ -21,13 +21,13 @@ if(isset($_POST['add_to_cart'])){
     $conteo=$cart->count($filter);
 
     if($conteo>0){
-        $message[] = 'already added to cart!';
+        $message[] = '¡Ya señadió al carrito!';
     }else{
         $insertOneResult = $cart->insertOne(
             ['user_id' => new MongoDB\BSON\ObjectId($user_id), 'name' => $product_name, 'price' => (int)$product_price,'quantity' => (int)$product_quantity,'image' => $product_image]
         );
     
-        $message[] = 'product added to cart!';
+        $message[] = '¡Producto añadido al carrito!';
     }
 
 };
@@ -40,7 +40,7 @@ if(isset($_POST['add_to_cart'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu</title>
+    <title>Menú</title>
 
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -54,13 +54,13 @@ if(isset($_POST['add_to_cart'])){
 <?php include 'header.php'; ?>
 
 <div class="heading">
-    <h3>Nuestra tienda</h3>
-    <p> <a href="home.php">Inicio</a> / Tienda </p>
+    <h3>Nuestro Menú</h3>
+    <p> <a href="home.php" style="text-decoration: none;">Inicio</a> / Tienda </p>
 </div>
 
 <section class="products">
 
-    <h1 class="title">latest products</h1>
+    <h1 class="title">Platillos Disponibles</h1>
 
     <div class="box-container">
 

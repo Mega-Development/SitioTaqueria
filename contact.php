@@ -23,13 +23,13 @@ if(isset($_POST['send'])){
     $doc=$mensaje->count($filter);
 
     if($doc> 0){
-        $message[] = 'message sent already!';
+        $message[] = '¡Se ha enviado el mensaje!';
     }else{
         $insertOneResult = $mensaje->insertOne(
             ['user_id' => new MongoDB\BSON\ObjectId($user_id), 'name' => $name1, 'email' => $email1,'number' => $number1,'message' => $msg1]
         );
 
-        $message[] = 'message sent successfully!';
+        $message[] = '¡El mensaje se envió correctamente!';
     }
 
 }
@@ -42,7 +42,7 @@ if(isset($_POST['send'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>contact</title>
+    <title>Contacto</title>
 
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -56,8 +56,8 @@ if(isset($_POST['send'])){
 <?php include 'header.php'; ?>
 
 <div class="heading">
-    <h3>contact us</h3>
-    <p> <a href="home.php">home</a> / Contactanos </p>
+    <h3>Contáctanos</h3>
+    <p> <a href="home.php">Inicio</a> / Contáctanos </p>
 </div>
 
 <section class="contact">
@@ -66,7 +66,7 @@ if(isset($_POST['send'])){
         <h3>¿Tienes algo que decirnos?</h3>
         <input type="text" name="name" required placeholder="Ingresa tu nombre" class="box">
         <input type="email" name="email" required placeholder="Ingresa tu correo" class="box">
-        <input type="number" name="number" required placeholder="Ingresa tu telefono" class="box">
+        <input type="number" name="number" required placeholder="Ingresa tu teléfono" class="box">
         <textarea name="message" class="box" placeholder="Ingresa tu mensaje" id="" cols="30" rows="10"></textarea>
         <input type="submit" value="send message" name="send" class="btn">
     </form>

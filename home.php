@@ -40,7 +40,7 @@ if (isset($_POST['add_to_cart'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>El taco feliz</title>
+    <title>El Rincón del Taco</title>
     <link rel="icon" href="images/icono.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <!-- font awesome cdn link  -->
@@ -58,19 +58,19 @@ if (isset($_POST['add_to_cart'])) {
     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="images/carousel1.PNG" class="d-block w-100" alt="...">
+                <img src="images/Banner_Taquería1.jpg" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-                <img src="images/carousel2.PNG" class="d-block w-100" alt="...">
+                <img src="images/Banner_Taquería2.jpg" class="d-block w-100" alt="...">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
+            <span class="visually-hidden">Anterior</span>
         </button>
         <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
+            <span class="visually-hidden">Siguiente</span>
         </button>
     </div>
 
@@ -87,7 +87,7 @@ if (isset($_POST['add_to_cart'])) {
             foreach ($select_products1 as $fetch_products1) {
             ?>
                 <form action="" method="post" class="box">
-                    <img class="image" src="uploaded_img/<?php echo $fetch_products1['image']; ?>" alt="">
+                    <img id="img_product" class="image" src="uploaded_img/<?php echo $fetch_products1['image']; ?>" alt="">
                     <div class="name"><?php echo $fetch_products1['name']; ?></div>
                     <div class="price">$<?php echo $fetch_products1['price']; ?>/-</div>
                     <input type="number" min="1" name="product_quantity" value="1" class="qty">
@@ -122,7 +122,7 @@ if (isset($_POST['add_to_cart'])) {
             <div class="content">
                 <h3>Acerca de nosotros</h3>
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit quos enim minima ipsa dicta officia corporis ratione saepe sed adipisci?</p>
-                <a href="about.php" class="btn">read more</a>
+                <a href="about.php" class="btn">Leer más</a>
             </div>
 
         </div>
@@ -134,14 +134,10 @@ if (isset($_POST['add_to_cart'])) {
         <div class="content">
             <h3>¿Necesitas ponerte en contacto con nosotros?</h3>
             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque cumque exercitationem repellendus, amet ullam voluptatibus?</p>
-            <a href="contact.php" class="white-btn">contact us</a>
+            <a href="contact.php" style="text-decoration: none;" class="white-btn">Contáctanos</a>
         </div>
 
     </section>
-
-
-
-
 
     <?php include 'footer.php'; ?>
 

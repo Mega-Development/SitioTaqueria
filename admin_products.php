@@ -29,7 +29,7 @@ if(isset($_POST['add_product'])){
 
 
     if($doc > 0){
-        $message[] = 'product name already added';
+        $message[] = 'El nombre del producto ya existe';
     }else{
 
         $insertOneResult = $products->insertOne(
@@ -38,7 +38,7 @@ if(isset($_POST['add_product'])){
 
         if($insertOneResult){
             if($image_size > 2000000){
-                $message[] = 'image size is too large';
+                $message[] = 'La imagen es muy pesada';
             }else{
                 move_uploaded_file($image_tmp_name, $image_folder);
                 $message[] = 'Producto añadido exitosamente';
@@ -155,8 +155,8 @@ if(isset($_POST['update_product'])){
                     <img src="uploaded_img/<?php echo $fetch_products1['image']; ?>" alt="">
                     <div class="name"><?php echo $fetch_products1['name']; ?></div>
                     <div class="price">$<?php echo $fetch_products1['price']; ?>/-</div>
-                    <a href="admin_products.php?update=<?php echo $fetch_products1['_id']; ?>" class="option-btn">update</a>
-                    <a href="admin_products.php?delete=<?php echo $fetch_products1['_id']; ?>" class="delete-btn" onclick="return confirm('delete this product?');">delete</a>
+                    <a href="admin_products.php?update=<?php echo $fetch_products1['_id']; ?>" class="option-btn">Actualizar</a>
+                    <a href="admin_products.php?delete=<?php echo $fetch_products1['_id']; ?>" class="delete-btn" onclick="return confirm('¿Desea eliminar el producto?');">Eliminar</a>
                 </div>
                 <?php
             }
@@ -185,8 +185,8 @@ if(isset($_POST['update_product'])){
                     <input type="hidden" name="update_p_id" value="<?php echo $fetch_update1['_id']; ?>">
                     <input type="hidden" name="update_old_image" value="<?php echo $fetch_update1['image']; ?>">
                     <img src="uploaded_img/<?php echo $fetch_update1['image']; ?>" alt="">
-                    <input type="text" name="update_name" value="<?php echo $fetch_update1['name']; ?>" class="box" required placeholder="enter product name">
-                    <input type="number" name="update_price" value="<?php echo $fetch_update1['price']; ?>" min="0" class="box" required placeholder="enter product price">
+                    <input type="text" name="update_name" value="<?php echo $fetch_update1['name']; ?>" class="box" required placeholder="Ingrese el nombre del producto">
+                    <input type="number" name="update_price" value="<?php echo $fetch_update1['price']; ?>" min="0" class="box" required placeholder="Ingrese el precio del producto">
                     <input type="file" class="box" name="update_image" accept="image/jpg, image/jpeg, image/png">
                     <input type="submit" value="update" name="update_product" class="btn">
                     <input type="reset" value="cancel" id="close-update" class="option-btn">

@@ -20,7 +20,7 @@ if(isset($_POST['update_cart'])){
         ['$set' => ['quantity' => (int)$cart_quantity]]
     );
 
-    $message[] = "actulizado con exito";
+    $message[] = "Actulizado con éxito";
 }
 
 if(isset($_GET['delete'])){
@@ -65,7 +65,7 @@ if(isset($_GET['delete_all'])){
 
 <div class="heading">
     <h3>Carrito de compra</h3>
-    <p> <a href="home.php">Inicio</a> / Carrito </p>
+    <p> <a href="home.php" style="text-decoration: none;">Inicio</a> / Carrito </p>
 </div>
 
 <section class="shopping-cart">
@@ -83,7 +83,7 @@ if(isset($_GET['delete_all'])){
             foreach($select_cart1 as $fetch_cart1){
                 ?>
                 <div class="box">
-                    <a href="cart.php?delete=<?php echo $fetch_cart1['_id']; ?>" class="fas fa-times" onclick="return confirm('delete this from cart?');"></a>
+                    <a href="cart.php?delete=<?php echo $fetch_cart1['_id']; ?>" class="fas fa-times" onclick="return confirm('¿Desea eliminar el producto del carrito?');" style="text-decoration: none;"></a>
                     <img src="uploaded_img/<?php echo $fetch_cart1['image']; ?>" alt="">
                     <div class="name"><?php echo $fetch_cart1['name']; ?></div>
                     <div class="price">$<?php echo $fetch_cart1['price']; ?>/-</div>
@@ -92,7 +92,7 @@ if(isset($_GET['delete_all'])){
                         <input type="number" min="1" name="cart_quantity" value="<?php echo $fetch_cart1['quantity']; ?>">
                         <input type="submit" name="update_cart" value="update" class="option-btn">
                     </form>
-                    <div class="sub-total"> sub total : <span>$<?php echo $sub_total = ($fetch_cart1['quantity'] * $fetch_cart1['price']); ?>/-</span> </div>
+                    <div class="sub-total"> Sub-Total : <span>$<?php echo $sub_total = ($fetch_cart1['quantity'] * $fetch_cart1['price']); ?>/-</span> </div>
                 </div>
                 <?php
                 $grand_total += $sub_total;
@@ -104,14 +104,14 @@ if(isset($_GET['delete_all'])){
     </div>
 
     <div style="margin-top: 2rem; text-align:center;">
-        <a href="cart.php?delete_all" class="delete-btn <?php echo ($grand_total > 1)?'':'disabled'; ?>" onclick="return confirm('delete all from cart?');">delete all</a>
+        <a href="cart.php?delete_all" style="text-decoration: none;" class="delete-btn <?php echo ($grand_total > 1)?'':'disabled'; ?>" onclick="return confirm('delete all from cart?');">Eliminar Todo</a>
     </div>
 
     <div class="cart-total">
         <p>Total : <span>$<?php echo $grand_total; ?>/-</span></p>
         <div class="flex">
             <a href="shop.php" class="option-btn">Continuar comprando</a>
-            <a href="checkout.php" class="btn <?php echo ($grand_total > 1)?'':'disabled'; ?>">Procesar el pago</a>
+            <a href="checkout.php" class="btn <?php echo ($grand_total > 1)?'':'disabled'; ?>" style="text-decoration: none;" >Procesar el pago</a>
         </div>
     </div>
 

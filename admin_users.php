@@ -28,7 +28,7 @@ if(isset($_GET['delete'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>users</title>
+    <title>Usuarios</title>
 
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -43,7 +43,7 @@ if(isset($_GET['delete'])){
 
 <section class="users">
 
-    <h1 class="title"> Cuentas de usuarios</h1>
+    <h1 class="title">Cuentas de usuarios</h1>
 
     <div class="box-container">
         <?php
@@ -55,9 +55,9 @@ if(isset($_GET['delete'])){
             <div class="box">
                 <p> ID de Usuario: <span><?php echo $fetch_users1['_id']; ?></span> </p>
                 <p> Nombre de usuario: <span><?php echo $fetch_users1['name']; ?></span> </p>
-                <p> Correo : <span><?php echo $fetch_users1['email']; ?></span> </p>
-                <p> Tipo de usuario : <span style="color:<?php if($fetch_users1['user_type'] == 'admin'){ echo 'var(--orange)'; } ?>"><?php echo $fetch_users1['user_type']; ?></span> </p>
-                <a href="admin_users.php?delete=<?php echo $fetch_users1['_id']; ?>" onclick="return confirm('delete this user?');" class="delete-btn">Eliminar usuario</a>
+                <p> Correo: <span><?php echo $fetch_users1['email']; ?></span> </p>
+                <p> Tipo de usuario: <span style="color:<?php if($fetch_users1['user_type'] == 'admin'){ echo 'var(--orange)'; } ?>"><?php echo $fetch_users1['user_type']; ?></span> </p>
+                <a href="admin_users.php?delete=<?php echo $fetch_users1['_id']; ?>" onclick="return confirm('¿Desea eliminar el usuario?');" class="delete-btn" style="text-decoration: none;">Eliminar usuario</a>
             </div>
             <?php
         };
