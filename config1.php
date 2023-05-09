@@ -15,5 +15,6 @@ $cart = $taqueria_db->carrito;
 $products= $taqueria_db->productos;
 $orders= $taqueria_db->ordenes;
 $mensaje= $taqueria_db->mensajes;
+//PRUEBA
 
 ?>
