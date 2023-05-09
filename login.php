@@ -57,7 +57,7 @@ if(isset($_POST['submit'])){
 
 </head>
 <body>
-<!-- Mensaje de ejemplo  -->
+
 <?php
 if(isset($message)){
     foreach($message as $message){
@@ -70,8 +70,6 @@ if(isset($message)){
     }
 }
 ?>
-
-
 
 <div class="form-container">
 
