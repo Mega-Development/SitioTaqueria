@@ -29,10 +29,7 @@
                 $cadena = $doc;
                 $separador = " • ";
                 $separada = explode($separador, $cadena);
-                //var_dump($separada);
-                //echo "$separada[0]"."</br>";
                 $nombre=$separada[0];
-                //var_dump((int)$separada[1]);
                 //? Aqui Conseguiremos la variables de precio producto
                 $producto = $products->findOne(
                     ['name' => $nombre]
@@ -56,7 +53,6 @@
 ?>
 
 <?php
-/// Powered by Evilnapsis go to http://evilnapsis.com
 include "fpdf/fpdf.php";
 
 $pdf = new FPDF($orientation='P',$unit='mm');
@@ -193,17 +189,13 @@ $pdf->Ln();
 $pdf->Ln();
 $yposdinamic += (count($data2)*10);
 $pdf->SetFont('Arial','B',10);    
-
 $pdf->setY($yposdinamic);
 $pdf->setX(10);
 $pdf->Cell(5,$textypos,"Muchas gracias por su compra");
 $pdf->SetFont('Arial','',10);    
-
 $pdf->setY($yposdinamic+10);
 $pdf->setX(10);
 $pdf->Cell(5,$textypos,"Comprobante de compra");
 $pdf->setY($yposdinamic+20);
 $pdf->setX(10);
-
-
 $pdf->output();

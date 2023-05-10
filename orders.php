@@ -1,6 +1,5 @@
 <?php
-
-require 'vendor/autoload.php';
+//require 'vendor/autoload.php';
 include 'config1.php';
 
 session_start();
@@ -61,6 +60,7 @@ if(!isset($user_id)){
                     <p> Tus órdenes: <span><?php echo $fetch_orders1['total_products']; ?></span> </p>
                     <p> Precio total: <span>$<?php echo $fetch_orders1['total_price']; ?>/-</span> </p>
                     <p> Estado de pago: <span style="color:<?php if($fetch_orders1['payment_status'] == 'pending'){ echo 'red'; }else{ echo 'green'; } ?>;"><?php echo $fetch_orders1['payment_status']; ?></span> </p>
+                    <a href="FPDF\recibo.php?order=<?php echo $fetch_orders1['_id']; ?>" class="btn">Ver Detalles</a>
                 </div>
                 <?php
             }
@@ -69,11 +69,6 @@ if(!isset($user_id)){
         }
         ?>
     </div>
-            <center>
-            <div class="text-center mb-2">
-              <a href="/recibo.php" target="_blank" class="btn btn-success">Factura</a>
-            </div>
-            </center>
 </section>
 
 
