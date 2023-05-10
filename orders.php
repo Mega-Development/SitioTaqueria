@@ -69,7 +69,11 @@ if(!isset($user_id)){
         }
         ?>
     </div>
-
+            <center>
+            <div class="text-center mb-2">
+              <a href="/recibo.php" target="_blank" class="btn btn-success">Factura</a>
+            </div>
+            </center>
 </section>
 
 
