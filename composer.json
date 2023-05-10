@@ -1,5 +1,15 @@
 {
+    "name": "mega_dev/sitio_taqueria",
+    "description": "Proyecto de un sitio web de Taquería",
+    "type": "project",
     "require": {
-        "mongodb/mongodb": "^1.11"
-    }
+        "monolog/monolog": "1.0.*",
+        "mongodb/mongodb": "^1.15"
+    },
+    "license": "MIT",
+    "authors": [{
+        "name": "Mega Development",
+        "email": "megadevelopment@gmail.com"
+    }],
+    "minimum-stability": "dev"
 }
