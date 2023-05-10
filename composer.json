@@ -4,12 +4,11 @@
     "type": "project",
     "require": {
         "monolog/monolog": "1.0.*",
-        "mongodb/mongodb": "^1.11"
+        "mongodb/mongodb": "^1.4"
     },
     "license": "MIT",
     "authors": [{
         "name": "Mega Development",
         "email": "megadevelopment@gmail.com"
-    }],
-    "minimum-stability": "dev"
+    }]
 }
