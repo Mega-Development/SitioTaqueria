@@ -1,9 +1,7 @@
 <?php
-
 require 'vendor/autoload.php';
 include 'config1.php';
 session_start();
-
 
 if(isset($_POST['submit'])){
 
@@ -14,24 +12,21 @@ if(isset($_POST['submit'])){
     if (isset($email1["email"])) {
 
         if ($email1["email"]== $_POST['email']) {
-            if ($email1["pass"] == $_POST['password']) {
-                if($email1["user_type"] == 'admin'){
-
+            //ver contenido de la variable
+            var_dump(password_verify($_POST['password'],$email1["pass"] ));
+            //Funcion password_verify para comparar contrasena encriptada
+            if (password_verify($_POST['password'],$email1["pass"] )) {
+                if ($email1["user_type"] == 'admin') {
                     $_SESSION['admin_name'] = $email1['name'];
                     $_SESSION['admin_email'] = $email1['email'];
                     $_SESSION['admin_id'] = $email1['_id'];
-                    header('location:admin_page.php');
-
-                }elseif($email1["user_type"] == 'user'){
-
-                    $_SESSION['user_name'] = $email1['name'];
-                    $_SESSION['user_email'] = $email1['email'];
+                    header('location:admin_page.php'); 
+                } elseif ($email1["user_type"] == 'user') {
+                    $_SESSION['user_name'] = $email1['name'];                        $_SESSION['user_email'] = $email1['email'];
                     $_SESSION['user_id'] = $email1['_id'];
                     header('location:home.php');
-
                 }
             }
-
         }
     }else{
         $message[] = '¡Email o contraseña incorrecta!';

@@ -1,25 +1,28 @@
 <?php
 require 'vendor/autoload.php';
-
 include 'config1.php';
+
 if(isset($_POST['submit'])){
-
-
     $name1 = $_POST['name'];
     $email1 = $_POST['email'];
     $pass1 = $_POST['password'];
     $cpass1 = $_POST['cpassword'];
     $user_type = $_POST['user_type'];
 
-    $filtro =array('email'=>$email1);
-    $doc=$users->count($filtro);
+    $filtro = array('email'=>$email1);
+    $doc = $users->count($filtro);
 
     if($doc> 0){
-        $message[] = 'Ya hay un usuario con ese correo!';
+        $message[] = 'Ya existe un usuario con ese correo!';
     }else{
         if($pass1 != $cpass1){
-            $message[] = 'La contra no conincide!';
+            $message[] = 'La contraseña no conincide!';
         }else{
+            //La contrasena se encripta por medio de la funcion password_hash
+            $pass1 = password_hash($pass1, PASSWORD_DEFAULT);
+            $cpass1 = password_hash($cpass1, PASSWORD_DEFAULT);
+
+            //Se realiza el insert con la contrasena encriptada
             $insertOneResult = $users->insertOne(
                 ['name' => $name1, 'email' => $email1, 'pass' => $pass1,'cpass' => $cpass1,'user_type' => $user_type]
             );
