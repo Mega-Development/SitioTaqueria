@@ -1,6 +1,6 @@
 <?php
 
-include 'config1.php';
+include 'db_connection.php';
 
 session_start();
 session_unset();
