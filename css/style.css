@@ -396,7 +396,8 @@ section {
 }
 
 .products .box-container .box .image {
-    height: 30rem;
+    height:auto;
+    max-width: 100%;
 }
 
 .products .box-container .box .name {
