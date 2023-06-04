@@ -359,7 +359,7 @@ function AddPage($orientation='', $size='', $rotation=0)
 
 function Header()
 {
-	$this->Image('Logo.PNG',150,5,50);
+	// $this->Image('Logo.PNG',150,5,50);
 
 	$this->SetFont('Arial','B',16);
 

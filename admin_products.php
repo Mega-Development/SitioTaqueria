@@ -118,7 +118,7 @@ if (isset($_POST['update_product'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <!-- site metas -->
-    <title>El taco feliz</title>
+    <title>Panel Administrador</title>
     <link rel="icon" href="images/icono.png">
     <!-- bootstrap css -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
