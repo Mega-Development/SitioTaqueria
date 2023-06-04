@@ -2,13 +2,13 @@
 
 
 require 'vendor/autoload.php';
-include 'config1.php';
+include 'db_connection.php';
 
 session_start();
 
 $admin_id = $_SESSION['admin_id'];
 
-if(!isset($admin_id)){
+if (!isset($admin_id)) {
     header('location:login.php');
 }
 
@@ -16,136 +16,285 @@ if(!isset($admin_id)){
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel</title>
 
+<head>
+    <!-- basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- site metas -->
+    <title>Administración</title>
+    <link rel="icon" href="images/icono.png">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- owl css -->
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <!-- style css -->
+    <link rel="stylesheet" href="css/estyle.css">
+    <!-- awesome fontfamily -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-    <!-- custom admin css file link  -->
-    <link rel="stylesheet" href="css/admin_style.css">
-
 </head>
+
 <body>
 
-<?php include 'admin_header.php'; ?>
+    <?php include 'admin_header.php'; ?>
 
-<!-- admin dashboard section starts  -->
+    <!-- admin dashboard section starts  -->
 
-<section class="dashboard">
+    <section class="dashboard">
 
-    <h1 class="title">Tablero administrador</h1>
-
-    <div class="box-container">
-
-        <div class="box">
-            <?php
-            $total_pendings = 0;
-            $filter = array('payment_status'=>'pending');
-            $doc=$orders->count($filter);
-
-            if($doc > 0){
-                $select_pending1 = $orders->find(
-                    ['payment_status'=>'pending']
-                );
-                foreach($select_pending1 as $fetch_pendings1){
-                    $total_price = $fetch_pendings1['total_price'];
-                    $total_pendings += $total_price;
-                };
-            };
-            ?>
-            <h3>$<?php echo $total_pendings; ?>/-</h3>
-            <p>Total pendientes</p>
+        <!-- about -->
+        <div class="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="title">
+                            <i class="fa-solid fa-screwdriver-wrench"></i>
+                            <h2>Tablero de administradores</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+        <!-- end about -->
 
-        <div class="box">
-            <?php
-            $total_completed = 0;
-            $filter2 = array('payment_status'=>'completed');
-            $doc2=$orders->count($filter2);
-            if($doc2 > 0){
-                $select_completed1 = $orders->find(
-                    ['payment_status'=>'completed']
-                );
-                foreach($select_completed1 as $fetch_completed1){
-                    $total_price = $fetch_completed1['total_price'];
-                    $total_completed += $total_price;
-                };
-            };
-            ?>
-            <h3>$<?php echo $total_completed; ?>/-</h3>
-            <p>Pagos procesados</p>
-        </div>
+        <div class="box-container">
+            <div class="row mt-2">
 
-        <div class="box">
-            <?php
-            $doc3=$orders->count();
-            $number_of_orders = $doc3;
-            ?>
-            <h3><?php echo $number_of_orders; ?></h3>
-            <p>Pedidos realizados</p>
-        </div>
+                <div class="col-xl-4 col-md-6 col-sm-6">
+                    <div class="card crypto-card-3 pull-up">
+                        <div class="card-content">
+                            <div class="card-body">
 
-        <div class="box">
-            <?php
-            $doc4=$products->count();
-            $number_of_products = $doc4;
-            ?>
-            <h3><?php echo $number_of_products; ?></h3>
-            <p>Productos añadidos</p>
-        </div>
+                                <?php
+                                $total_pendings = 0;
+                                $filter = array('payment_status' => 'pending');
+                                $doc = $orders->count($filter);
 
-        <div class="box">
-            <?php
-            $filter5 = array('user_type'=>'user');
-            $doc5=$users->count($filter5);
-            $number_of_users = $doc5;
-            ?>
-            <h3><?php echo $number_of_users; ?></h3>
-            <p>Usuarios normales</p>
-        </div>
+                                if ($doc > 0) {
+                                    $select_pending1 = $orders->find(
+                                        ['payment_status' => 'pending']
+                                    );
+                                    foreach ($select_pending1 as $fetch_pendings1) {
+                                        $total_price = $fetch_pendings1['total_price'];
+                                        $total_pendings += $total_price;
+                                    };
+                                };
+                                ?>
 
-        <div class="box">
-            <?php
-            $filter6 = array('user_type'=>'admin');
-            $doc6=$users->count($filter6);
-            $number_of_admins = $doc6;
-            ?>
-            <h3><?php echo $number_of_admins; ?></h3>
-            <p>Usuarios administradores</p>
-        </div>
+                                <div class="row">
+                                    <div class="px-1 align-self-center">
+                                        <h2 class="text-bold-500">Total de dinero en ordenes pendientes</h2>
+                                    </div>
+                                </div>
+                                <div class="row py-2 d-flex justify-content-around">
+                                    <div class="mr-auto ml-1">
+                                        <h3>$<?php echo $total_pendings; ?></h3><span class="text-light"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="box">
-            <?php
-            $doc7=$users->count();
-            $number_of_account = $doc7;
-            ?>
-            <h3><?php echo $number_of_account; ?></h3>
-            <p>Total de cuentas</p>
-        </div>
+                <div class="col-xl-4 col-md-6 col-sm-6">
+                    <div class="card crypto-card-3 pull-up">
+                        <div class="card-content">
+                            <div class="card-body">
 
-        <div class="box">
-            <?php
-            $doc8=$mensaje->count();
-            $number_of_messages = $doc8;
-            ?>
-            <h3><?php echo $number_of_messages; ?></h3>
-            <p>Mensajes nuevos</p>
-        </div>
+                                <?php
+                                $total_completed = 0;
+                                $filter2 = array('payment_status' => 'completed');
+                                $doc2 = $orders->count($filter2);
+                                if ($doc2 > 0) {
+                                    $select_completed1 = $orders->find(
+                                        ['payment_status' => 'completed']
+                                    );
+                                    foreach ($select_completed1 as $fetch_completed1) {
+                                        $total_price = $fetch_completed1['total_price'];
+                                        $total_completed += $total_price;
+                                    };
+                                };
+                                ?>
 
-    </div>
+                                <div class="row">
+                                    <div class="px-1 align-self-center">
+                                        <h2 class="text-bold-500">Total de dinero en órdenes completadas</h2>
+                                    </div>
+                                </div>
+                                <div class="row py-2 d-flex justify-content-around">
+                                    <div class="mr-auto ml-1">
+                                        <h3>$<?php echo $total_completed; ?></h3>
+                                        <span class="text-light"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-</section>
+                <div class="col-xl-4 col-md-6 col-sm-6">
+                    <div class="card crypto-card-3 pull-up">
+                        <div class="card-content">
+                            <div class="card-body">
 
-<!-- admin dashboard section ends -->
+                                <?php
+                                $doc3 = $orders->count();
+                                $number_of_orders = $doc3;
+                                ?>
+                                <div class="row">
+                                    <div class="px-1 align-self-center">
+                                        <h2 class="text-bold-500">Órdenes</h2>
+                                    </div>
+                                </div>
+                                <div class="row py-2 d-flex justify-content-around">
+                                    <div class="mr-auto ml-1">
+                                        <h3><?php echo $number_of_orders; ?></h3><span class="text-light"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
 
+                <div class="col-xl-4 col-md-6 col-sm-6">
+                    <div class="card crypto-card-3 pull-up">
+                        <div class="card-content">
+                            <div class="card-body">
 
-<!-- custom admin js file link  -->
-<script src="js/admin_script.js"></script>
+                                <?php
+                                $doc4 = $products->count();
+                                $number_of_products = $doc4;
+                                ?>
+                                <div class="row">
+                                    <div class="px-1 align-self-center">
+                                        <h2 class="text-bold-500">Total de productos añadidos al menú</h2>
+                                    </div>
+                                </div>
+                                <div class="row py-2 d-flex justify-content-around">
+                                    <div class="mr-auto ml-1">
+                                        <h3><?php echo $number_of_products; ?></h3><span class="text-light"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-xl-4 col-md-6 col-sm-6">
+                    <div class="card crypto-card-3 pull-up">
+                        <div class="card-content">
+                            <div class="card-body">
+
+                                <?php
+                                $filter5 = array('user_type' => 'user');
+                                $doc5 = $users->count($filter5);
+                                $number_of_users = $doc5;
+                                ?>
+
+                                <div class="row">
+                                    <div class="px-1 align-self-center">
+                                        <h2 class="text-bold-500">Total de usuarios normales</h2>
+                                    </div>
+                                </div>
+                                <div class="row py-2 d-flex justify-content-around">
+                                    <div class="mr-auto ml-1">
+                                        <h3><?php echo $number_of_users; ?></h3><span class="text-light"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-4 col-md-6 col-sm-6">
+                    <div class="card crypto-card-3 pull-up">
+                        <div class="card-content">
+                            <div class="card-body">
+
+                                <?php
+                                $filter6 = array('user_type' => 'admin');
+                                $doc6 = $users->count($filter6);
+                                $number_of_admins = $doc6;
+                                ?>
+
+                                <div class="row">
+                                    <div class="px-1 align-self-center">
+                                        <h2 class="text-bold-500">Total de usuarios administradores</h2>
+                                    </div>
+                                </div>
+                                <div class="row py-2 d-flex justify-content-around">
+                                    <div class="mr-auto ml-1">
+                                        <h3><?php echo $number_of_admins; ?></h3><span class="text-light"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-4 col-md-6 col-sm-6">
+                    <div class="card crypto-card-3 pull-up">
+                        <div class="card-content">
+                            <div class="card-body">
+
+                                <?php
+                                $doc7 = $users->count();
+                                $number_of_account = $doc7;
+                                ?>
+                                <div class="row">
+                                    <div class="px-1 align-self-center">
+                                        <h2 class="text-bold-500">Total de cuentas</h2>
+                                    </div>
+                                </div>
+                                <div class="row py-2 d-flex justify-content-around">
+                                    <div class="mr-auto ml-1">
+                                        <h3><?php echo $number_of_account; ?></h3>
+                                        <span class="text-light"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-4 col-md-6 col-sm-6">
+                    <div class="card crypto-card-3 pull-up">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <?php
+                                $doc8 = $messages->count();
+                                $number_of_messages = $doc8;
+                                ?>
+
+                                <div class="row">
+                                    <div class="px-1 align-self-center">
+                                        <h2 class="text-bold-500">Mensajes nuevos</h2>
+                                    </div>
+                                </div>
+                                <div class="row py-2 d-flex justify-content-around">
+                                    <div class="mr-auto ml-1">
+                                        <h3><?php echo $number_of_messages; ?></h3>
+                                        <span class="text-light"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    </section>
+
+    <script src="js/admin_script.js"></script>
 
 </body>
+
 </html>
