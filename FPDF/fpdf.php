@@ -359,7 +359,7 @@ function AddPage($orientation='', $size='', $rotation=0)
 
 function Header()
 {
-	$this->Image('logo.PNG',100,5,100);
+	// $this->Image('Logo.PNG',150,5,50);
 
 	$this->SetFont('Arial','B',16);
 
@@ -375,7 +375,7 @@ function Footer()
 
 	$this->SetFont('Arial','I',8);
 
-	$this->Cell(0,10,'Page '.$this->PageNo().'El Taco Feliz',0,0,'C');
+	$this->Cell(0,10,'Page '.$this->PageNo().'El Rincón del Taco',0,0,'C');
 }
 
 function PageNo()
