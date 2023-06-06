@@ -131,7 +131,7 @@
                     <h6 class="display-3"><?php echo "$".$document['total_price'] ?></h6>
                 </div>
                 <div class="col-3">
-                <a href="recibo.php?order=<?php echo $orden_id ?>"><button type="button" class="btn">Imprimir Recibo</button></a>
+                <a href="recibo?order=<?php echo $orden_id ?>"><button type="button" class="btn">Imprimir Recibo</button></a>
                 </div>
                 </div>
 

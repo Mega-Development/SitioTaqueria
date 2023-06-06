@@ -104,7 +104,7 @@ if (!isset($user_id)) {
                                                                                                 echo 'green';
                                                                                             } ?>;"><?php echo $fetch_orders1['payment_status']; ?></span> </p>
 
-                                <a href="factura.php?order=<?php echo $fetch_orders1['_id']; ?>" class="btn">Ver Detalles</a>
+                                <a href="factura?order=<?php echo $fetch_orders1['_id']; ?>" class="btn">Ver Detalles</a>
                             </div>
                         </div>
                     </div>
