@@ -2,230 +2,184 @@
 
 
 require 'vendor/autoload.php';
-include 'config1.php';
+include 'db_connection.php';
 
 session_start();
 
 $user_id = $_SESSION['user_id'];
 
-if(!isset($user_id)){
+if (!isset($user_id)) {
     header('location:login.php');
 }
 
 ?>
 
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
-    <meta charset="UTF-8">
+    <!-- basic -->
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- site metas -->
     <title>Acerca de</title>
+    <link rel="icon" href="images/icono.png">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- owl css -->
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <!-- style css -->
 
-    <!-- font awesome cdn link  -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-    <!-- custom css file link  -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/estyle.css">
+    <link rel="stylesheet" href="css/estilos.css">
+    <!-- responsive-->
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- awesome fontfamily -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
-<body>
+<!-- body -->
 
-<?php include 'header.php'; ?>
+<body class="main-layout">
+    <!-- loader  -->
+    <!-- <div class="loader_bg">
+        <div class="loader"><img src="images/loading.gif" alt="" /></div>
+    </div> -->
 
-<div class="heading">
-    <h3>Acerca de</h3>
-    <p> <a href="home.php">Inicio</a> / Acerca de </p>
-</div>
+    <div class="wrapper">
+        <!-- end loader -->
 
-<section class="about">
 
-    <div class="flex">
+        <div id="content">
+            <!-- header -->
+            <?php include "header.php"; ?>
+            <!-- end header -->
 
-        <div class="image">
-            <img src="images/about-img.jpg" alt="">
+
+            <div class="bg_bg">
+                <!-- about -->
+                <div class="about">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="title">
+                                    <i class="fa-solid fa-circle-info"></i>
+                                    <h2>Acerca de nosotros</h2>
+                                    <span>Somos una empresa familiar, creamos nuestro restaurante de comida mexicana en
+                                        el año 1996. Cuándo comenzamos en Santa Ana logramos tener dos sucursales por al
+                                        menos 10 años. En el 2004 comenzamos a proyectarnos al menos 2 sucursales más, y
+                                        en el 2006 esta meta fue posible. Actualmente contamos con 10 sucursales al
+                                        rededor del país.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                <div class="about_box">
+                                    <h3>Nuestra comida</h3>
+                                    <p>Las recetas de cada platillo de nuestro menú provienen originalmente de México,
+                                        Alejandra Gónzalez, es la madre de Rosa Gónzalez, quién comenzó este proyecto.
+                                        Alejandra era originaria de Ciduad de México y toda su vida se dedicó a la
+                                        cocina en casa, tenía un pequeño comedor que a toda la gente del pueblo le
+                                        encantaba.<br><br>
+                                        Cuándo su hija creció, aprendió el arte de la cocina Mexicana, se enamoró de la
+                                        cocina cómo su madre.<br><br>
+                                        Por diferentes factores tuvieron que emigrar a El Salvador, y es en la ciudad de
+                                        Santa Ana que el negocio resurgió, esta vez se convirtió en un negcio familiar
+                                        que estamos seguros a la señora Alejandra le enorgullecería mucho, ya que partió
+                                        en el año 2010. <br><br>
+                                        Al dejar su legado su familia ha continuado con este negocio, y a crecido
+                                        exponencialmente. Hoy en día la empresa busca compartir un poco de su historia
+                                        culinaria y familiar por medio de nuevos medios cómo su nueva plataforma.</p>
+                                </div>
+                            </div>
+                            <div class="col-xl-5 col-lg-5 col-md-10 col-sm-12 about_img_boxpdnt">
+                                <div class="about_img">
+                                    <figure><img src="images/familia.jfif"></figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end about -->
+
+            </div>
+            <!-- footer -->
+            <?php include 'footer.php'; ?>
+            <!-- end footer -->
+
         </div>
-
-        <div class="content">
-            <h3>¿Porqué comer en taco feliz?</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet voluptatibus aut hic molestias, reiciendis natus fuga, cumque excepturi veniam ratione iure. Excepturi fugiat placeat iusto facere id officia assumenda temporibus?</p>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit quos enim minima ipsa dicta officia corporis ratione saepe sed adipisci?</p>
-            <a href="contact.php" class="btn">contact us</a>
-        </div>
-
     </div>
+    <div class="overlay"></div>
+    <!-- Javascript files-->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
 
-</section>
+    <script src="js/jquery-3.0.0.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
 
-<section class="reviews">
+            $('#dismiss, .overlay').on('click', function() {
+                $('#sidebar').removeClass('active');
+                $('.overlay').removeClass('active');
+            });
 
-    <h1 class="title">Reseñas de clientes</h1>
+            $('#sidebarCollapse').on('click', function() {
+                $('#sidebar').addClass('active');
+                $('.overlay').addClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
+        });
+    </script>
 
-    <div class="box-container">
+    <style>
+        #owl-demo .item {
+            margin: 3px;
+        }
 
-        <div class="box">
-            <img src="images/pic-1.png" alt="">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt ad, quo labore fugiat nam accusamus quia. Ducimus repudiandae dolore placeat.</p>
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-            </div>
-            <h3>john deo</h3>
-        </div>
-
-        <div class="box">
-            <img src="images/pic-2.png" alt="">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt ad, quo labore fugiat nam accusamus quia. Ducimus repudiandae dolore placeat.</p>
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-            </div>
-            <h3>john deo</h3>
-        </div>
-
-        <div class="box">
-            <img src="images/pic-3.png" alt="">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt ad, quo labore fugiat nam accusamus quia. Ducimus repudiandae dolore placeat.</p>
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-            </div>
-            <h3>john deo</h3>
-        </div>
-
-        <div class="box">
-            <img src="images/pic-4.png" alt="">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt ad, quo labore fugiat nam accusamus quia. Ducimus repudiandae dolore placeat.</p>
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-            </div>
-            <h3>john deo</h3>
-        </div>
-
-        <div class="box">
-            <img src="images/pic-5.png" alt="">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt ad, quo labore fugiat nam accusamus quia. Ducimus repudiandae dolore placeat.</p>
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-            </div>
-            <h3>john deo</h3>
-        </div>
-
-        <div class="box">
-            <img src="images/pic-6.png" alt="">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt ad, quo labore fugiat nam accusamus quia. Ducimus repudiandae dolore placeat.</p>
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-            </div>
-            <h3>john deo</h3>
-        </div>
-
-    </div>
-
-</section>
-
-<section class="authors">
-
-    <h1 class="title">greate authors</h1>
-
-    <div class="box-container">
-
-        <div class="box">
-            <img src="images/author-1.jpg" alt="">
-            <div class="share">
-                <a href="#" class="fab fa-facebook-f"></a>
-                <a href="#" class="fab fa-twitter"></a>
-                <a href="#" class="fab fa-instagram"></a>
-                <a href="#" class="fab fa-linkedin"></a>
-            </div>
-            <h3>john deo</h3>
-        </div>
-
-        <div class="box">
-            <img src="images/author-2.jpg" alt="">
-            <div class="share">
-                <a href="#" class="fab fa-facebook-f"></a>
-                <a href="#" class="fab fa-twitter"></a>
-                <a href="#" class="fab fa-instagram"></a>
-                <a href="#" class="fab fa-linkedin"></a>
-            </div>
-            <h3>john deo</h3>
-        </div>
-
-        <div class="box">
-            <img src="images/author-3.jpg" alt="">
-            <div class="share">
-                <a href="#" class="fab fa-facebook-f"></a>
-                <a href="#" class="fab fa-twitter"></a>
-                <a href="#" class="fab fa-instagram"></a>
-                <a href="#" class="fab fa-linkedin"></a>
-            </div>
-            <h3>john deo</h3>
-        </div>
-
-        <div class="box">
-            <img src="images/author-4.jpg" alt="">
-            <div class="share">
-                <a href="#" class="fab fa-facebook-f"></a>
-                <a href="#" class="fab fa-twitter"></a>
-                <a href="#" class="fab fa-instagram"></a>
-                <a href="#" class="fab fa-linkedin"></a>
-            </div>
-            <h3>john deo</h3>
-        </div>
-
-        <div class="box">
-            <img src="images/author-5.jpg" alt="">
-            <div class="share">
-                <a href="#" class="fab fa-facebook-f"></a>
-                <a href="#" class="fab fa-twitter"></a>
-                <a href="#" class="fab fa-instagram"></a>
-                <a href="#" class="fab fa-linkedin"></a>
-            </div>
-            <h3>john deo</h3>
-        </div>
-
-        <div class="box">
-            <img src="images/author-6.jpg" alt="">
-            <div class="share">
-                <a href="#" class="fab fa-facebook-f"></a>
-                <a href="#" class="fab fa-twitter"></a>
-                <a href="#" class="fab fa-instagram"></a>
-                <a href="#" class="fab fa-linkedin"></a>
-            </div>
-            <h3>john deo</h3>
-        </div>
-
-    </div>
-
-</section>
+        #owl-demo .item img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+    </style>
 
 
-<?php include 'footer.php'; ?>
-
-<!-- custom js file link  -->
-<script src="js/script.js"></script>
+    <script>
+        $(document).ready(function() {
+            var owl = $('.owl-carousel');
+            owl.owlCarousel({
+                margin: 10,
+                nav: true,
+                loop: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 5
+                    }
+                }
+            })
+        })
+    </script>
 
 </body>
+
 </html>

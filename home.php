@@ -1,8 +1,6 @@
 <?php
-
-
 require 'vendor/autoload.php';
-include 'config1.php';
+include 'db_connection.php';
 session_start();
 
 $user_id = $_SESSION['user_id'];
@@ -22,129 +20,270 @@ if (isset($_POST['add_to_cart'])) {
     $conteo = $cart->count($filter);
 
     if ($conteo > 0) {
-        $message[] = 'already added to cart!';
+        $message[] = 'Ya fue añadido previamente';
     } else {
         $insertOneResult = $cart->insertOne(
             ['user_id' => new MongoDB\BSON\ObjectId($user_id), 'name' => $product_name, 'price' => (int)$product_price, 'quantity' => (int)$product_quantity, 'image' => $product_image]
         );
-        $message[] = 'product added to cart!';
+        $message[] = 'Producto añadido exitosamente al carrito';
     }
 };
 
 ?>
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
-    <meta charset="UTF-8">
+    <!-- basic -->
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>El Rincón del Taco</title>
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- site metas -->
+    <title>Inicio</title>
     <link rel="icon" href="images/icono.png">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- owl css -->
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <!-- style css -->
+
+    <link rel="stylesheet" href="css/estyle.css">
+    <link rel="stylesheet" href="css/estilos.css">
+    <!-- responsive-->
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- awesome fontfamily -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-    <!-- custom css file link  -->
-    <link rel="stylesheet" href="css/style.css">
-
 </head>
+<!-- body -->
 
-<body>
+<body class="main-layout">
+    <!-- loader  -->
+    <!-- <div class="loader_bg">
+        <div class="loader"><img src="images/loading.gif" alt="" /></div>
+    </div> -->
 
-    <?php include 'header.php'; ?>
+    <div class="wrapper">
+        <!-- end loader -->
 
-    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="images/Banner_Taquería1.jpg" class="d-block w-100" alt="...">
+        <div id="content">
+            <!-- header -->
+            <?php include 'header.php'; ?>
+            <!-- end header -->
+            <!-- start slider section -->
+            <div class="slider_section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="full">
+                                <div id="main_slider" class="carousel vert slide" data-ride="carousel" data-interval="5000">
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <div class="slider_cont">
+                                                        <h3>El Rincón del Taco<br>te invita a su reapertura</h3>
+                                                        <p>Estamos emocionados por hacerte la invitación a nuestra
+                                                            reapertura este 13 de novimebre de 2023</p>
+                                                        <a class="btn" href="contact.php">Contáctanos</a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <div class="slider_image full text_align_center">
+                                                        <img class="img-responsive" src="images/taco_feliz_2.png" alt="#" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <div class="slider_cont">
+                                                        <h3>El Rincón del Taco</h3>
+                                                        <p>Somos un restaurante de comida mexicana. Nuestro local
+                                                            principal se encuentra en Santa Ana,
+                                                            pero contamos con varias sucursales al rededor del país.Será
+                                                            un placer atenderte.</p>
+                                                        <a class="btn" href="shop.php">Menú</a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-7 full text_align_center">
+                                                    <div class="slider_image">
+                                                        <img class="img-responsive" src="images/taco_feliz_2.png" alt="#" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a class="carousel-control-prev" href="#main_slider" role="button" data-slide="prev">
+                                        <i class="fa fa-angle-up"></i>
+                                    </a>
+                                    <br><br><br><br><br><br>
+                                    <a class="carousel-control-next" href="#main_slider" role="button" data-slide="next">
+                                        <i class="fa fa-angle-down"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="carousel-item">
-                <img src="images/Banner_Taquería2.jpg" class="d-block w-100" alt="...">
-            </div>
+            <!-- end slider section -->
+            <section class="products">
+                <h1 class="title">Últimos productos</h1>
+                <div class="box-container">
+                    <?php
+                    $select_products1 = $products->find(
+                        //['name'=>'Conceptos Basicos Php']
+                    );
+
+                    foreach (new LimitIterator($select_products1, 0, 3) as $fetch_products1) {
+
+                    ?>
+                        <form action="" method="post" class="box">
+                            <img class="product_blog_img" src="uploaded_img/<?php echo $fetch_products1['image']; ?>" alt="">
+                            <div class="product_blog_cont">
+                                <div class="name"><?php echo $fetch_products1['name']; ?></div>
+                                <div class="theme_color">$<?php echo $fetch_products1['price']; ?></div>
+                                <input type="hidden" min="1" name="product_quantity" value="1" class="qty">
+                                <input type="hidden" name="product_name" value="<?php echo $fetch_products1['name']; ?>">
+                                <input type="hidden" name="product_price" value="<?php echo $fetch_products1['price']; ?>">
+                                <input type="hidden" name="product_image" value="<?php echo $fetch_products1['image']; ?>">
+                                <input type="submit" value="Agregar al carrito" name="add_to_cart" class="btn" class="main_bt_border">
+                            </div>
+                        </form>
+
+                    <?php
+                        //var_dump($fetch_products1['name']);
+                    }
+
+                    ?>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-5">
+                        </div>
+                        <div class="col-2">
+                            <div class="load-more" style="margin-top: 2rem;">
+                                <a href="shop.php" class="option-btn">Ver más</a>
+                            </div>
+                        </div>
+                        <div class="col-5">
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+
+            <!-- section -->
+
+
+            <section class="about">
+
+                <div class="flex">
+
+                    <div class="image">
+                        <img src="images/about-img.jpg" alt="">
+                    </div>
+
+                    <div class="content">
+                        <h3>Acerca de nosotros</h3>
+                        <p>Somos una empresa familiar, creamos nuestro restaurante de comida mexicana en el año 1996. Cuando comenzamos en Santa Ana
+                            logramos tener dos sucursales por al menos 10 años. En el 2004 comenzamos a proyectarnos al menos 2 sucursales más, y en el 2006 esta meta fue posible.
+                        </p>
+                        <a href="about.php" class="btn">Leer más</a>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section class="home-contact">
+
+                <div class="content">
+                    <h3>¿Necesitas ponerte en contacto con nosotros?</h3>
+                    <p>Actualmente contamos con 10 sucursales al rededor del país.</p>
+                    <a href="contact.php" class="btn">Contáctanos</a>
+                </div>
+
+            </section>
+
+            <!-- footer -->
+            <?php include 'footer.php'; ?>
+            <!-- end footer -->
+
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Anterior</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Siguiente</span>
-        </button>
     </div>
+    <div class="overlay"></div>
+    <!-- Javascript files-->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
 
-    <section class="products">
+    <script src="js/jquery-3.0.0.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
 
-        <h1 class="title">Últimos productos</h1>
+            $('#dismiss, .overlay').on('click', function() {
+                $('#sidebar').removeClass('active');
+                $('.overlay').removeClass('active');
+            });
 
-        <div class="box-container">
+            $('#sidebarCollapse').on('click', function() {
+                $('#sidebar').addClass('active');
+                $('.overlay').addClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
+        });
+    </script>
 
-            <?php
-            $select_products1 = $products->find(
-                //['name'=>'Conceptos Basicos Php']
-            );
-            foreach ($select_products1 as $fetch_products1) {
-            ?>
-                <form action="" method="post" class="box">
-                    <img id="img_product" class="image" src="uploaded_img/<?php echo $fetch_products1['image']; ?>" alt="">
-                    <div class="name"><?php echo $fetch_products1['name']; ?></div>
-                    <div class="price">$<?php echo $fetch_products1['price']; ?>/-</div>
-                    <input type="number" min="1" name="product_quantity" value="1" class="qty">
-                    <input type="hidden" name="product_name" value="<?php echo $fetch_products1['name']; ?>">
-                    <input type="hidden" name="product_price" value="<?php echo $fetch_products1['price']; ?>">
-                    <input type="hidden" name="product_image" value="<?php echo $fetch_products1['image']; ?>">
-                    <input type="submit" value="add to cart" name="add_to_cart" class="btn">
-                </form>
-            <?php
-                //var_dump($fetch_products1['name']);
-            }
-            echo "<pre>";
-            ?>
+    <style>
+        #owl-demo .item {
+            margin: 3px;
+        }
+
+        #owl-demo .item img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+    </style>
 
 
-        </div>
-
-        <div class="load-more" style="margin-top: 2rem; text-align:center">
-            <a href="shop.php" class="option-btn">Ver más</a>
-        </div>
-
-    </section>
-
-    <section class="about">
-
-        <div class="flex">
-
-            <div class="image">
-                <img src="images/about-img.jpg" alt="">
-            </div>
-
-            <div class="content">
-                <h3>Acerca de nosotros</h3>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit quos enim minima ipsa dicta officia corporis ratione saepe sed adipisci?</p>
-                <a href="about.php" class="btn">Leer más</a>
-            </div>
-
-        </div>
-
-    </section>
-
-    <section class="home-contact">
-
-        <div class="content">
-            <h3>¿Necesitas ponerte en contacto con nosotros?</h3>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque cumque exercitationem repellendus, amet ullam voluptatibus?</p>
-            <a href="contact.php" style="text-decoration: none;" class="white-btn">Contáctanos</a>
-        </div>
-
-    </section>
-
-    <?php include 'footer.php'; ?>
-
-    <!-- custom js file link  -->
-    <script src="js/script.js"></script>
+    <script>
+        $(document).ready(function() {
+            var owl = $('.owl-carousel');
+            owl.owlCarousel({
+                margin: 10,
+                nav: true,
+                loop: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 5
+                    }
+                }
+            })
+        })
+    </script>
 
 </body>
 
 </html>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
