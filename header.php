@@ -1,32 +1,35 @@
 <?php
+// Desactivar la caché en el lado del cliente
+header("Cache-Control: no-cache, no-store, must-revalidate");
+header("Pragma: no-cache");
+header("Expires: 0");
 
 require 'vendor/autoload.php';
-include 'config1.php';
+include 'db_connection.php';
 if (isset($message)) {
     foreach ($message as $message) {
         echo '
-      <div class="message">
-         <span>' . $message . '</span>
-         <i class="fas fa-times" onclick="this.parentElement.remove();"></i>
-      </div>
-      ';
+            <div class="message">
+                <span>' . $message . '</span>
+                <a class="btn" href="cart.php">Ver Carrito</a>
+                <i class="fa-solid fa-circle-check"></i>
+                <i class="fas fa-times" onclick="this.parentElement.remove();"></i>
+            </div>
+        ';
     }
 }
 ?>
 
 <header class="header">
-
-    <div class="header-1">
-        <div class="flex">
-            <div class="share">
-                <a href="#" style="text-decoration: none;" class="fab fa-facebook-f"></a>
-                <a href="#" style="text-decoration: none;" class="fab fa-twitter"></a>
-                <a href="#" style="text-decoration: none;" class="fab fa-instagram"></a>
-                <a href="#" style="text-decoration: none;" class="fab fa-linkedin"></a>
-            </div>
-            <p> <a href="login" style="text-decoration: none;">Acceder</a> | <a href="register" style="text-decoration: none;">Registrarse</a> </p>
-        </div>
-    </div>
+    <!-- Caché -->
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Last-Modified" content="0">
+    <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/estilos.css">
 
     <div class="header-2">
         <div class="flex">
