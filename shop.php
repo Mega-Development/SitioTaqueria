@@ -36,32 +36,7 @@ if (isset($_POST['add_to_cart'])) {
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <!-- basic -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- mobile metas -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-    <!-- site metas -->
-    <title>Menú</title>
-    <link rel="icon" href="images/icono.png">
-    <!-- bootstrap css -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- owl css -->
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <!-- style css -->
 
-    <link rel="stylesheet" href="css/estyle.css">
-    <link rel="stylesheet" href="css/estilos.css">
-    <!-- responsive-->
-    <link rel="stylesheet" href="css/responsive.css">
-    <!-- awesome fontfamily -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- font awesome cdn link  -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-<body>
     <?php include 'header.php'; ?>
 
 
