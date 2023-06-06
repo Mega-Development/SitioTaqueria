@@ -42,7 +42,7 @@ if (isset($_POST['submit'])) {
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <!-- site metas -->
     <title>Registro</title>
-    <link rel="icon" href="images/icono.png">
+    <link rel="icon" href="./images/favicon.png">
     <!-- bootstrap css -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <!-- owl css -->
@@ -115,7 +115,7 @@ if (isset($_POST['submit'])) {
                         </div>
                         <div class="col-md-6 align-items-center">
                             <div>
-                                <img class="img-responsive" src="./images/Logo_Taquería.png" alt="#" style="height: 550px; margin-left: 100px; margin-top: 170px;"/>
+                                <img class="img-responsive" src="./images/Logo.png" alt="#" style="height: 550px; margin-left: 100px; margin-top: 170px;"/>
                             </div>
                         </div>
                     </div>
