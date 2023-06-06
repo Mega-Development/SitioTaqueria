@@ -64,7 +64,8 @@ if (isset($message)) {
             <div class="flex">
 
                 <nav class="navbar">
-                    <a class="logo" href="home.php"><img src="./images/Logo.png" width="125px" alt="#" /></a>
+                    <!-- <a class="logo" href="home.php"><img src="./images/Logo.png" width="125px" alt="#" /></a> -->
+                    <a class="logo" href="home.php"><img src="./images/Logo_Horizontal.png" width="220px"  alt="#" /></a>
                     <a href="home.php">Inicio</a>
                     <a href="about.php">Acerca de</a>
                     <a href="shop.php">Menú</a>

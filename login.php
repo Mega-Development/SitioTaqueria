@@ -83,7 +83,7 @@ if (isset($_POST['submit'])) {
     ?>
     <!-- loader  -->
     <div class="loader_bg">
-        <div class="loader"><img src="images/load_sleep.gif" alt="" /></div>
+        <div class="loader"><img src="images/loader_2.gif" alt="" /></div>
     </div>
 
     <div class="wrapper">
@@ -122,7 +122,7 @@ if (isset($_POST['submit'])) {
                                         </div>
                                         <div class="col-md-7">
                                             <div class="slider_image full text_align_center">
-                                                <img class="img-size" src="images/taco.png" />
+                                            <img class="img-responsive" src="./images/Logo.png" alt="#" style="height: 550px; margin-left: 100px;"/>
                                             </div>
                                         </div>
                                     </div>
