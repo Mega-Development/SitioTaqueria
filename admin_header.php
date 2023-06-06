@@ -1,4 +1,9 @@
 <?php
+// Desactivar la caché en el lado del cliente
+header("Cache-Control: no-cache, no-store, must-revalidate");
+header("Pragma: no-cache");
+header("Expires: 0");
+
 require 'vendor/autoload.php';
 include 'db_connection.php';
 if (isset($message)) {
