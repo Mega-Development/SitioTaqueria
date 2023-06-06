@@ -4,33 +4,35 @@ include 'db_connection.php';
 session_start();
 
 if (isset($_POST['submit'])) {
+    if (isset($_POST['submit'])) {
 
-    $email1 = $users->findOne(
-        ['email' => $_POST['email']]
-    );
+        $email1 = $users->findOne(
+            ['email' => $_POST['email']]
+        );
 
-    if (isset($email1["email"])) {
+        if (isset($email1["email"])) {
 
-        if ($email1["email"] == $_POST['email']) {
-            var_dump(password_verify($_POST['password'],$email1["pass"] ));
-            if (password_verify($_POST['password'],$email1["pass"] )) {
-                if ($email1["user_type"] == 'admin') {
+            if ($email1["email"] == $_POST['email']) {
+                var_dump(password_verify($_POST['password'], $email1["pass"]));
+                if (password_verify($_POST['password'], $email1["pass"])) {
+                    if ($email1["user_type"] == 'admin') {
 
-                    $_SESSION['admin_name'] = $email1['name'];
-                    $_SESSION['admin_email'] = $email1['email'];
-                    $_SESSION['admin_id'] = $email1['_id'];
-                    header('location:admin_page.php');
-                } elseif ($email1["user_type"] == 'user') {
+                        $_SESSION['admin_name'] = $email1['name'];
+                        $_SESSION['admin_email'] = $email1['email'];
+                        $_SESSION['admin_id'] = $email1['_id'];
+                        header('location:admin_page.php');
+                    } elseif ($email1["user_type"] == 'user') {
 
-                    $_SESSION['user_name'] = $email1['name'];
-                    $_SESSION['user_email'] = $email1['email'];
-                    $_SESSION['user_id'] = $email1['_id'];
-                    header('location:home.php');
+                        $_SESSION['user_name'] = $email1['name'];
+                        $_SESSION['user_email'] = $email1['email'];
+                        $_SESSION['user_id'] = $email1['_id'];
+                        header('location:home.php');
+                    }
                 }
             }
+        } else {
+            $message[] = '¡Email o contraseña incorrecta!';
         }
-    } else {
-        $message[] = '¡Email o contraseña incorrecta!';
     }
 }
 ?>
