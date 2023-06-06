@@ -1,4 +1,9 @@
 <?php
+// Desactivar la caché en el lado del cliente
+header("Cache-Control: no-cache, no-store, must-revalidate");
+header("Pragma: no-cache");
+header("Expires: 0");
+
 require 'vendor/autoload.php';
 include 'db_connection.php';
 if (isset($message)) {
@@ -13,6 +18,12 @@ if (isset($message)) {
 }
 ?>
 <header class="header">
+    <!-- Caché -->
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Last-Modified" content="0">
+    <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="css/estilos.css">
 
