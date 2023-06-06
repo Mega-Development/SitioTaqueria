@@ -104,6 +104,7 @@ if (!isset($user_id)) {
                                 </div>
                             </div>
                         </div>
+                        <br>
                     </div>
                 </div>
                 <!-- end about -->

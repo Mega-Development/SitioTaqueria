@@ -26,7 +26,7 @@ if (!isset($admin_id)) {
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <!-- site metas -->
     <title>Administración</title>
-    <link rel="icon" href="images/icono.png">
+    <link rel="icon" href="./images/favicon.png">
     <!-- bootstrap css -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <!-- owl css -->

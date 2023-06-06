@@ -34,7 +34,7 @@ if (isset($_GET['delete'])) {
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <!-- site metas -->
     <title>Mensajes</title>
-    <link rel="icon" href="images/icono.png">
+    <link rel="icon" href="./images/favicon.png">
     <!-- owl css -->
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <!-- style css -->
