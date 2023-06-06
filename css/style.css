@@ -396,8 +396,7 @@ section {
 }
 
 .products .box-container .box .image {
-    height:auto;
-    max-width: 100%;
+    height: 30rem;
 }
 
 .products .box-container .box .name {
@@ -675,8 +674,7 @@ section {
 }
 
 .shopping-cart .box-container .box img {
-    height: auto;
-    max-width: 100%;
+    height: 30rem;
 }
 
 .shopping-cart .box-container .box .name {

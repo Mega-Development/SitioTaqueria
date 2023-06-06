@@ -1,5 +1,5 @@
 <?php
 
-include 'db_connection.php'
+include 'config1.php'
 
 ?>

@@ -329,9 +329,7 @@ section{
 }
 
 .show-products .box-container .box img{
-   height: auto;
-   max-width: 100%;
-   border: 1px solid red;
+   height: 30rem;
 }
 
 .show-products .box-container .box .name{
