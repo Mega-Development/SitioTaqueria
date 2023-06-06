@@ -9,7 +9,7 @@ session_start();
 $admin_id = $_SESSION['admin_id'];
 
 if (!isset($admin_id)) {
-    header('location:login.php');
+    header('location:login');
 }
 
 if (isset($_POST['update_order'])) {
@@ -29,7 +29,7 @@ if (isset($_GET['delete'])) {
     $deleteResult = $orders->deleteOne(
         array('_id' => new MongoDB\BSON\ObjectId($delete_id))
     );
-    header('location:admin_orders.php');
+    header('location:admin_orders');
 }
 
 ?>
@@ -112,7 +112,7 @@ if (isset($_GET['delete'])) {
                                             <option value="completed">Completado</option>
                                         </select>
                                         <input type="submit" value="Actualizar" name="update_order" class="option-btn">
-                                        <a href="admin_orders.php?delete=<?php echo $fetch_orders1['_id']; ?>" onclick="return confirm('¿Desea eliminar esta orden?');" class="delete-btn">Eliminar</a>
+                                        <a href="admin_orders?delete=<?php echo $fetch_orders1['_id']; ?>" onclick="return confirm('¿Desea eliminar esta orden?');" class="delete-btn">Eliminar</a>
                                     </form>
                                 </div>
                             </div>

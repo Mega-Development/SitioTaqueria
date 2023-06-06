@@ -173,7 +173,7 @@
                         <div class="card-body">
                             <h5 class="card-title"><?php echo "".$nom[$i] ?></h5>
                             <p class="card-text"><?php echo "".$desc[$i] ?></p>
-                            <a href="shop.php" style="color:goldenrod">Comprar Nuevamente </a>   
+                            <a href="shop" style="color:goldenrod">Comprar Nuevamente </a>   
                             
                             <label class="card-text"><small class="text-muted"><span style="color:brown"><?php echo "$".$sub[$i] ?></span></small></label>
                         </div>

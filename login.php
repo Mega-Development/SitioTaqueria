@@ -20,13 +20,13 @@ if (isset($_POST['submit'])) {
                         $_SESSION['admin_name'] = $email1['name'];
                         $_SESSION['admin_email'] = $email1['email'];
                         $_SESSION['admin_id'] = $email1['_id'];
-                        header('location:admin_page.php');
+                        header('location:admin_page');
                     } elseif ($email1["user_type"] == 'user') {
 
                         $_SESSION['user_name'] = $email1['name'];
                         $_SESSION['user_email'] = $email1['email'];
                         $_SESSION['user_id'] = $email1['_id'];
-                        header('location:home.php');
+                        header('location:home');
                     }
                 }
             }
@@ -114,7 +114,7 @@ if (isset($_POST['submit'])) {
                                                         <input type="submit" name="submit" value="Acceder" class="main_bt_border"><br>
                                                     </p>
                                                     <br><br>
-                                                    <p>¿Aún no tienes una cuenta? <a href="register.php" style="color: orange;">Regístrate ahora</a></p>
+                                                    <p>¿Aún no tienes una cuenta? <a href="register" style="color: orange;">Regístrate ahora</a></p>
                                                 </form>
                                                 <br><br><br><br><br><br> <br><br>
 

@@ -9,7 +9,7 @@ session_start();
 $admin_id = $_SESSION['admin_id'];
 
 if (!isset($admin_id)) {
-    header('location:login.php');
+    header('location:login');
 }
 
 if (isset($_GET['delete'])) {
@@ -17,7 +17,7 @@ if (isset($_GET['delete'])) {
     $deleteResult = $users->deleteOne(
         array('_id' => new MongoDB\BSON\ObjectId($delete_id))
     );
-    header('location:admin_users.php');
+    header('location:admin_users');
 }
 
 ?>
@@ -93,7 +93,7 @@ if (isset($_GET['delete'])) {
                                                 <p> Tipo de usuario: <span style="color:<?php if ($fetch_users1['user_type'] == 'admin') {
                                                                                                 echo 'var(--orange)';
                                                                                             } ?>"><?php echo $fetch_users1['user_type']; ?></span> </p>
-                                                <a href="admin_users.php?delete=<?php echo $fetch_users1['_id']; ?>" onclick="return confirm('¿Desea eliminar este usuario?');" class="delete-btn">Eliminar usuario</a>
+                                                <a href="admin_users?delete=<?php echo $fetch_users1['_id']; ?>" onclick="return confirm('¿Desea eliminar este usuario?');" class="delete-btn">Eliminar usuario</a>
 
                                             </div>
                                         </div>

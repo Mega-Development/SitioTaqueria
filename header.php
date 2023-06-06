@@ -11,7 +11,7 @@ if (isset($message)) {
         echo '
             <div class="message">
                 <span>' . $message . '</span>
-                <a class="btn" href="cart.php">Ver Carrito</a>
+                <a class="btn" href="cart">Ver Carrito</a>
                 <i class="fa-solid fa-circle-check"></i>
                 <i class="fas fa-times" onclick="this.parentElement.remove();"></i>
             </div>
@@ -35,18 +35,18 @@ if (isset($message)) {
         <div class="flex">
 
             <nav class="navbar">
-                <a class="logo" href="home.php"><img src="./images/Logo_Taquería.png" width="125px" alt="#" /></a>
-                <a href="home.php">Inicio</a>
-                <a href="about.php">Acerca de</a>
-                <a href="shop.php">Menú</a>
-                <a href="contact.php">Contactános</a>
-                <a href="orders.php">Órdenes</a>
+                <a class="logo" href="home"><img src="./images/Logo_Taquería.png" width="125px" alt="#" /></a>
+                <a href="home">Inicio</a>
+                <a href="about">Acerca de</a>
+                <a href="shop">Menú</a>
+                <a href="contact">Contactános</a>
+                <a href="orders">Órdenes</a>
             </nav>
 
             <div class="icons">
                 <div id="menu-btn" class="fas fa-bars"></div>
-                <a href="search_page.php" class="fas fa-search"></a>
-                <a href="logout.php" class="fa-solid fa-right-from-bracket"></a>
+                <a href="search_page" class="fas fa-search"></a>
+                <a href="logout" class="fa-solid fa-right-from-bracket"></a>
                 <?php
 
                 $carrito = $cart->find(
@@ -58,12 +58,12 @@ if (isset($message)) {
                 }
 
                 ?>
-                <a href="cart.php"> <i class="fa-solid fa-cart-plus"></i> <span>(<?php echo $counter; ?>)</span> </a>
+                <a href="cart"> <i class="fa-solid fa-cart-plus"></i> <span>(<?php echo $counter; ?>)</span> </a>
             </div>
             <div class="user-box">
                 <p>username : <span><?php echo $_SESSION['user_name']; ?></span></p>
                 <p>email : <span><?php echo $_SESSION['user_email']; ?></span></p>
-                <a href="logout.php" class="delete-btn">Salir</a>
+                <a href="logout" class="delete-btn">Salir</a>
             </div>
         </div>
     </div>

@@ -7,7 +7,7 @@ session_start();
 $admin_id = $_SESSION['admin_id'];
 
 if (!isset($admin_id)) {
-    header('location:login.php');
+    header('location:login');
 };
 if (isset($_GET['delete'])) {
     $delete_id = $_GET['delete'];
@@ -16,7 +16,7 @@ if (isset($_GET['delete'])) {
         ['_id' => new MongoDB\BSON\ObjectId($delete_id)]
     );
     unlink('uploaded_img/' . $delete_image['image']);
-    header('location:admin_products.php');
+    header('location:admin_products');
 }
 
 if (isset($_POST['update_product'])) {
@@ -58,7 +58,7 @@ if (isset($_POST['update_product'])) {
         }
     }
 
-    header('location:admin_products.php');
+    header('location:admin_products');
 }
 
 ?>

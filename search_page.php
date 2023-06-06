@@ -7,7 +7,7 @@ session_start();
 $user_id = $_SESSION['user_id'];
 
 if (!isset($user_id)) {
-    header('location:login.php');
+    header('location:login');
 };
 
 if (isset($_POST['add_to_cart'])) {
@@ -139,7 +139,7 @@ if (isset($_POST['add_to_cart'])) {
         <div class="content">
             <h3>¿Necesitas ponerte en contacto con nosotros?</h3>
             <p>Actualmente contamos con 10 sucursales al rededor del país.</p>
-            <a href="contact.php" class="btn">Contáctanos</a>
+            <a href="contact" class="btn">Contáctanos</a>
         </div>
 
     </section>

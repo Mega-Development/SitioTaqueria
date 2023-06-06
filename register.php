@@ -22,7 +22,7 @@ if (isset($_POST['submit'])) {
                 ['name' => $name1, 'email' => $email1, 'pass' => $pass1, 'cpass' => $cpass1, 'user_type' => $user_type]
             );
             $message[] = 'Registro Exitoso!';
-            header('location:login.php');
+            header('location:login');
         }
     }
 }
@@ -107,7 +107,7 @@ if (isset($_POST['submit'])) {
                                     </p>
                                     </br>
                                     </br>
-                                    <p>¿Ya tienes una cuenta? <a href="login.php">Ingresa Ahora</a></p>
+                                    <p>¿Ya tienes una cuenta? <a href="login">Ingresa Ahora</a></p>
                                     </br>
                                     </br>
                                 </form>

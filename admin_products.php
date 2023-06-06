@@ -8,7 +8,7 @@ session_start();
 $admin_id = $_SESSION['admin_id'];
 
 if (!isset($admin_id)) {
-    header('location:login.php');
+    header('location:login');
 };
 
 if (isset($_POST['add_product'])) {
@@ -64,7 +64,7 @@ if (isset($_GET['delete'])) {
     $deleteResult = $products->deleteMany(
         ['_id' => new MongoDB\BSON\ObjectId($delete_id)]
     );
-    header('location:admin_products.php');
+    header('location:admin_products');
 }
 
 if (isset($_POST['update_product'])) {
@@ -102,7 +102,7 @@ if (isset($_POST['update_product'])) {
         }
     }
 
-    header('location:admin_products.php');
+    header('location:admin_products');
 }
 
 ?>
@@ -210,7 +210,7 @@ if (isset($_POST['update_product'])) {
                                                 <h3 class="card-title"> <img class="img-menu" src="uploaded_img/<?php echo $fetch_products1['image']; ?>" alt=""> </h3>
                                                 <h2 class="card-title centrado"> $<?php echo $fetch_products1['price']; ?> </h2>
                                                 <a href="proc_act.php?update=<?php echo $fetch_products1['_id']; ?>" class="option-btn btn-centrado">Editar</a>
-                                                <a href="admin_products.php?delete=<?php echo $fetch_products1['_id']; ?>" class="delete-btn btn-centrado" onclick="return confirm('¿Desea eliminar el producto?');">Eliminar</a>
+                                                <a href="admin_products?delete=<?php echo $fetch_products1['_id']; ?>" class="delete-btn btn-centrado" onclick="return confirm('¿Desea eliminar el producto?');">Eliminar</a>
                                             </div>
                                         </div>
                                     </div>

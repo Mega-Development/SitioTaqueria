@@ -6,7 +6,7 @@ session_start();
 $user_id = $_SESSION['user_id'];
 
 if (!isset($user_id)) {
-    header('location:login.php');
+    header('location:login');
 }
 
 if (isset($_POST['add_to_cart'])) {
@@ -89,7 +89,7 @@ if (isset($_POST['add_to_cart'])) {
                                                         <h3>El Rincón del Taco<br>te invita a su reapertura</h3>
                                                         <p>Estamos emocionados por hacerte la invitación a nuestra
                                                             reapertura este 13 de novimebre de 2023</p>
-                                                        <a class="btn" href="contact.php">Contáctanos</a>
+                                                        <a class="btn" href="contact">Contáctanos</a>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-7">
@@ -108,7 +108,7 @@ if (isset($_POST['add_to_cart'])) {
                                                             principal se encuentra en Santa Ana,
                                                             pero contamos con varias sucursales al rededor del país.Será
                                                             un placer atenderte.</p>
-                                                        <a class="btn" href="shop.php">Menú</a>
+                                                        <a class="btn" href="shop">Menú</a>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-7 full text_align_center">
@@ -169,7 +169,7 @@ if (isset($_POST['add_to_cart'])) {
                         </div>
                         <div class="col-2">
                             <div class="load-more" style="margin-top: 2rem;">
-                                <a href="shop.php" class="option-btn">Ver más</a>
+                                <a href="shop" class="option-btn">Ver más</a>
                             </div>
                         </div>
                         <div class="col-5">
@@ -196,7 +196,7 @@ if (isset($_POST['add_to_cart'])) {
                         <p>Somos una empresa familiar, creamos nuestro restaurante de comida mexicana en el año 1996. Cuando comenzamos en Santa Ana
                             logramos tener dos sucursales por al menos 10 años. En el 2004 comenzamos a proyectarnos al menos 2 sucursales más, y en el 2006 esta meta fue posible.
                         </p>
-                        <a href="about.php" class="btn">Leer más</a>
+                        <a href="about" class="btn">Leer más</a>
                     </div>
 
                 </div>
@@ -208,7 +208,7 @@ if (isset($_POST['add_to_cart'])) {
                 <div class="content">
                     <h3>¿Necesitas ponerte en contacto con nosotros?</h3>
                     <p>Actualmente contamos con 10 sucursales al rededor del país.</p>
-                    <a href="contact.php" class="btn">Contáctanos</a>
+                    <a href="contact" class="btn">Contáctanos</a>
                 </div>
 
             </section>

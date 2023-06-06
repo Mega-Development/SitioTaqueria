@@ -2,11 +2,11 @@
     <div class="footer-left">
 
         <p class="footer-links">
-            <a href="home.php">Inicio</a>
-            <a href="about.php">Acerca</a>
-            <a href="shop.php">Tienda</a>
-            <a href="contact.php">Contáctanos</a>
-            <a href="orders.php">Órdenes</a>
+            <a href="home">Inicio</a>
+            <a href="about">Acerca</a>
+            <a href="shop">Tienda</a>
+            <a href="contact">Contáctanos</a>
+            <a href="orders">Órdenes</a>
         </p>
 
         <p>Derechos reservados Mega Development &copy; - 2023</p>

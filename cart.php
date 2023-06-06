@@ -8,7 +8,7 @@ session_start();
 $user_id = $_SESSION['user_id'];
 
 if (!isset($user_id)) {
-   header('location:login.php');
+   header('location:login');
 }
 
 if (isset($_POST['update_cart'])) {
@@ -30,7 +30,7 @@ if (isset($_GET['delete'])) {
       array('_id' => new MongoDB\BSON\ObjectId($delete_id))
    );
 
-   header('location:cart.php');
+   header('location:cart');
 }
 
 if (isset($_GET['delete_all'])) {
@@ -39,7 +39,7 @@ if (isset($_GET['delete_all'])) {
       ['user_id' => new MongoDB\BSON\ObjectId($user_id)]
    );
    $message[] = printf("Deleted %d documents", $deleteResult->getDeletedCount());
-   header('location:cart.php');
+   header('location:cart');
 }
 
 ?>
@@ -105,7 +105,7 @@ if (isset($_GET['delete_all'])) {
             foreach ($select_cart1 as $fetch_cart1) {
          ?>
                <div class="box">
-                  <a href="cart.php?delete=<?php echo $fetch_cart1['_id']; ?>" class="fa-solid fa-trash fa-2x" style="color: Red;" onclick="return confirm('¿Desea eliminarlo?');"></a>
+                  <a href="cart?delete=<?php echo $fetch_cart1['_id']; ?>" class="fa-solid fa-trash fa-2x" style="color: Red;" onclick="return confirm('¿Desea eliminarlo?');"></a>
                   <img src="uploaded_img/<?php echo $fetch_cart1['image']; ?>" alt="">
                   <div class="name"><?php echo $fetch_cart1['name']; ?></div>
                   <div class="theme_color">$<?php echo $fetch_cart1['price']; ?></div>
@@ -127,7 +127,7 @@ if (isset($_GET['delete_all'])) {
       </div>
 
       <div style="margin-top: 2rem; text-align:center;">
-         <a href="cart.php?delete_all" class="delete-btn <?php echo ($grand_total > 1) ? '' : 'disabled'; ?>" onclick="return confirm('¿Desea eliminarlo?');">Eliminar todo</a>
+         <a href="cart?delete_all" class="delete-btn <?php echo ($grand_total > 1) ? '' : 'disabled'; ?>" onclick="return confirm('¿Desea eliminarlo?');">Eliminar todo</a>
          </br>
          </br>
          <h2>Total: <span>$<?php echo $grand_total; ?></span></h2>
@@ -135,8 +135,8 @@ if (isset($_GET['delete_all'])) {
 
       <div class="cart-total" style="margin-top: 2rem; text-align:center;">
          <div class="flex">
-            <a href="shop.php" style="margin-left: 0;" class="option-btn">Continuar comprando</a></br>
-            <a href="checkout.php" class="btn <?php echo ($grand_total > 1) ? '' : 'disabled'; ?>">Procesar pago</a></br>
+            <a href="shop" style="margin-left: 0;" class="option-btn">Continuar comprando</a></br>
+            <a href="checkout" class="btn <?php echo ($grand_total > 1) ? '' : 'disabled'; ?>">Procesar pago</a></br>
          </div>
       </div>
 

@@ -31,16 +31,16 @@ if (isset($message)) {
         <div class="flex">
 
             <nav class="navbar">
-                <a class="logo" href="admin_page.php"><img src="./images/Logo_Taquería.png" width="125px" alt="#"></a>
-                <a href="admin_page.php">Inicio</a>
-                <a href="admin_products.php">Menú</a>
-                <a href="admin_orders.php">Órdenes</a>
-                <a href="admin_users.php">Usuarios</a>
-                <a href="admin_contacts.php">Mensajes</a>
+                <a class="logo" href="admin_page"><img src="./images/Logo_Taquería.png" width="125px" alt="#"></a>
+                <a href="admin_page">Inicio</a>
+                <a href="admin_products">Menú</a>
+                <a href="admin_orders">Órdenes</a>
+                <a href="admin_users">Usuarios</a>
+                <a href="admin_contacts">Mensajes</a>
             </nav>
 
             <div class="icons">
-                <a href="logout.php" class="fa-solid fa-right-from-bracket"></a>
+                <a href="logout" class="fa-solid fa-right-from-bracket"></a>
             </div>
         </div>
     </div>
