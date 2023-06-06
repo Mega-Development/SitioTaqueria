@@ -60,7 +60,10 @@ if (isset($_POST['add_to_cart'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
 <body>
-
+    <!-- loader  -->
+    <div class="loader_bg" style="background-color: white;">
+        <div class="loader"><img src="images/loader_4.gif" alt="" /></div>
+    </div>
     <?php include 'header.php'; ?>
     <!-- about -->
     <div class="about">

@@ -8,11 +8,11 @@ session_start();
 
 $admin_id = $_SESSION['admin_id'];
 
-if(!isset($admin_id)){
+if (!isset($admin_id)) {
     header('location:login.php');
 };
 
-if(isset($_GET['delete'])){
+if (isset($_GET['delete'])) {
     $delete_id = $_GET['delete'];
     $deleteResult = $messages->deleteOne(
         array('_id' => new MongoDB\BSON\ObjectId($delete_id))
@@ -24,6 +24,7 @@ if(isset($_GET['delete'])){
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- basic -->
     <meta charset="utf-8">
@@ -48,42 +49,57 @@ if(isset($_GET['delete'])){
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
 </head>
+
 <body>
 
-<?php include 'admin_header.php'; ?>
+    <?php include 'admin_header.php'; ?>
 
-<section class="messages">
+    <section class="messages">
 
-    <h1 class="title"> Mensajes </h1>
+        <h1 class="title"> Mensajes </h1>
 
-    <div class="box-container">
-        <?php
-        $doc=$messages->count();
-        if($doc > 0){
-            $select_message1 = $messages->find(
+        <div class="box-container">
+            <?php
+            $doc = $messages->count();
+            if ($doc > 0) {
+                $select_message1 = $messages->find();
+                foreach ($select_message1 as $fetch_message1) {
 
-            );
-            foreach($select_message1 as $fetch_message1){
+            ?>
+                    <div class="col-xl-4 col-md-6 col-sm-6">
+                        <div class="card">
+                            <div class="card-header " style="background-color: #d3d3d3 ;">
+                                <div class="row">
+                                    <div class="col-sm">
+                                    <p class="card-text" style="margin-left: 20px;"><b>Mensaje de: <span><?php echo $fetch_message1['name']; ?></span></b> </p>
+                                    </div>
+                                </div>
 
-                ?>
-                <div class="box">
-                    <p> ID de usuario : <span><?php echo $fetch_message1['user_id']; ?></span> </p>
-                    <p> Nombre : <span><?php echo $fetch_message1['name']; ?></span> </p>
-                    <p> Número : <span><?php echo $fetch_message1['number']; ?></span> </p>
-                    <p> Correo : <span><?php echo $fetch_message1['email']; ?></span> </p>
-                    <p> messages : <span><?php echo $fetch_message1['message']; ?></span> </p>
-                    <a href="admin_contacts.php?delete=<?php echo $fetch_message1['_id']; ?>" onclick="return confirm('¿Desea eliminar?');" class="delete-btn">Eliminar mensaje</a>
-                </div>
-                <?php
-            };
-        }else{
-            echo '<p class="empty">No tiene mensajes</p>';
-        }
-        ?>
-    </div>
+                            </div>
 
-</section>
+                            <div class="card-body" style="width: 460px;max-height:250px ;">
+                                <p class="card-text"> ID de usuario : <span><?php echo $fetch_message1['user_id']; ?></span> </p>
+                                <p class="card-text"> Número : <span><?php echo $fetch_message1['number']; ?></span> </p>
+                                <p class="card-text"> Correo : <span><?php echo $fetch_message1['email']; ?></span> </p>
+                                <p class="card-text"> Mensaje : <span><?php echo $fetch_message1['message']; ?></span> </p>
+                                <a href="admin_contacts.php?delete=<?php echo $fetch_message1['_id']; ?>" onclick="return confirm('¿Desea eliminar?');" class="delete-btn">Eliminar mensaje</a>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+            <?php
+                };
+            } else {
+                echo '<p class="empty">No tiene mensajes</p>';
+            }
+            ?>
+        </div>
+
+    </section>
 
 
+    <!-- custom admin js file link  -->
+    <script src="js/admin_script.js"></script>
 </body>
+
 </html>

@@ -1,16 +1,14 @@
-<?php 
-    require 'vendor/autoload.php';
-    include 'db_connection.php';
-    session_start();
-    $user_id = $_SESSION['user_id'];
+<?php
+require 'vendor/autoload.php';
+include 'db_connection.php';
+session_start();
+$user_id = $_SESSION['user_id'];
 
-    if (isset($_GET['order'])) {
+if (isset($_GET['order'])) {
+} else {
+    header('location:orden.php');
+}
 
-    
-    }else{
-        header('location:orden.php');
-    }
-    
 ?>
 
 <!DOCTYPE html>
@@ -44,8 +42,8 @@
 </head>
 
 <body>
-        <!-- loader  -->
-        <div class="loader_bg" style="background-color: white;">
+    <!-- loader  -->
+    <div class="loader_bg" style="background-color: white;">
         <div class="loader"><img src="images/loader_4.gif" alt="" /></div>
     </div>
 
@@ -68,14 +66,14 @@
     </div>
     <!-- end about -->
 
-    
+
     <section class="placed-orders">
         <div class="box-container">
-        <?php
+            <?php
             $filter = array('user_id' => new MongoDB\BSON\ObjectId($user_id));
             $doc = $orders->count($filter);
-            $orden_id=$_GET['order'];
-        
+            $orden_id = $_GET['order'];
+
             //? Aqui Conseguiremos la variables de fecha  n°pedido Total Direccion
             $document = $orders->findOne(
                 ['_id' => new MongoDB\BSON\ObjectId($orden_id)]
@@ -88,29 +86,29 @@
             $cadena = $document['total_products'];
             $separador = ",";
             $separada = explode($separador, $cadena);
-            $enlaze=$separada;
-        
+            $enlaze = $separada;
+
             //* Aqui Conseguiremos la variables de Nombre producto y cantidad
-            $i=0;
-            foreach($enlaze as $doc){
+            $i = 0;
+            foreach ($enlaze as $doc) {
                 $cadena = $doc;
                 $separador = " • ";
                 $separada = explode($separador, $cadena);
                 //var_dump($separada);
                 //echo "$separada[0]"."</br>";
-                $nombre=$separada[0];
+                $nombre = $separada[0];
                 //var_dump((int)$separada[1]);
                 //? Aqui Conseguiremos la variables de precio producto
                 $producto = $products->findOne(
                     ['name' => $nombre]
                 );
-                $factura_products[]=$separada[1]." ".$separada[0]." $".$producto['price']."\n";
-                $cant[]=$separada[1];
-                $nom[]=$separada[0];
-                $sub[]=$producto['price'];
-                $img[]=$producto['image'];
-                $desc[]=$producto['Desc'];
-                $totalizado[]=$producto['price']*(int)$separada[1];
+                $factura_products[] = $separada[1] . " " . $separada[0] . " $" . $producto['price'] . "\n";
+                $cant[] = $separada[1];
+                $nom[] = $separada[0];
+                $sub[] = $producto['price'];
+                $img[] = $producto['image'];
+                $desc[] = $producto['Desc'];
+                $totalizado[] = $producto['price'] * (int)$separada[1];
                 //var_dump($producto['price']);
             }
             $t_products = implode('', $factura_products);
@@ -119,24 +117,24 @@
             ?>
 
             <div class="container">
-            <div class="card text-dark bg-light mb-3">
-                <div class="card-header">Pedido n.º: <span style="color: green;"><?php echo "".$document['_id'] ?></span></div>
-                <div class="card-body" >
-                    <h5 class="card-title">Pedido realizado: <span style="color:goldenrod;"><?php echo "".$document['placed_on'] ?></span></h5>
-                    <p class="card-text">Dirección de envío: <span style="color:goldenrod;"><?php echo "".$document['address'] ?></span></p>
+                <div class="card text-dark bg-light mb-3">
+                    <div class="card-header">Pedido n.º: <span style="color: green;"><?php echo "" . $document['_id'] ?></span></div>
+                    <div class="card-body">
+                        <h5 class="card-title">Pedido realizado: <span style="color:goldenrod;"><?php echo "" . $document['placed_on'] ?></span></h5>
+                        <p class="card-text">Dirección de envío: <span style="color:goldenrod;"><?php echo "" . $document['address'] ?></span></p>
+                    </div>
                 </div>
-            </div>
-            <hr>
+                <hr>
                 <div class="row align-items-start">
-                <div class="col-6 align-self-start">
-                    <h6 class="display-3">Total Factura</h6>
-                </div>
-                <div class="col-3">
-                    <h6 class="display-3"><?php echo "$".$document['total_price'] ?></h6>
-                </div>
-                <div class="col-3">
-                <a href="recibo.php?order=<?php echo $orden_id ?>"><button type="button" class="btn">Imprimir Recibo</button></a>
-                </div>
+                    <div class="col-6 align-self-start">
+                        <h6 class="display-3">Total Factura</h6>
+                    </div>
+                    <div class="col-3">
+                        <h6 class="display-3"><?php echo "$" . $document['total_price'] ?></h6>
+                    </div>
+                    <div class="col-3">
+                        <a href="recibo.php?order=<?php echo $orden_id ?>"><button type="button" class="btn">Imprimir Recibo</button></a>
+                    </div>
                 </div>
 
                 <table class="table">
@@ -149,44 +147,44 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php                         
-                        for ($i=0; $i <count($nom) ; $i++) {
+                        <?php
+                        for ($i = 0; $i < count($nom); $i++) {
 
                         ?>
-                        <tr>
-                            <th scope="row"><?php echo "".$cant[$i] ?></th>
-                            <td><?php echo "".$nom[$i] ?></td>
-                            <td><?php echo "$".$sub[$i] ?></td>
-                            <td><?php echo "$".$cant[$i]*$sub[$i] ?></td>
-                        </tr>
-                        <?php   
+                            <tr>
+                                <th scope="row"><?php echo "" . $cant[$i] ?></th>
+                                <td><?php echo "" . $nom[$i] ?></td>
+                                <td><?php echo "$" . $sub[$i] ?></td>
+                                <td><?php echo "$" . $cant[$i] * $sub[$i] ?></td>
+                            </tr>
+                        <?php
                         }
                         ?>
                     </tbody>
                 </table>
-                <?php                         
-                        for ($i=0; $i <count($nom) ; $i++) {
+                <?php
+                for ($i = 0; $i < count($nom); $i++) {
 
-                        ?>
-                <div class="card mb-3" style="max-width: 1200px;">
-                    <div class="row g-0">
-                        <div class="col-2">
-                        <img src="images/<?php echo $img[$i] ?>" class="img-fluid rounded-start" alt="..." width="200px" height="200px">
-                        </div>
-                        <div class="col-10">
-                        <div class="card-body">
-                            <h5 class="card-title"><?php echo "".$nom[$i] ?></h5>
-                            <p class="card-text"><?php echo "".$desc[$i] ?></p>
-                            <a href="shop.php" style="color:goldenrod">Comprar Nuevamente </a>   
-                            
-                            <label class="card-text"><small class="text-muted"><span style="color:brown"><?php echo "$".$sub[$i] ?></span></small></label>
-                        </div>
+                ?>
+                    <div class="card mb-3" style="max-width: 1200px;">
+                        <div class="row g-0">
+                            <div class="col-2">
+                                <img src="images/<?php echo $img[$i] ?>" class="img-fluid rounded-start" alt="..." width="200px" height="200px">
+                            </div>
+                            <div class="col-10">
+                                <div class="card-body">
+                                    <h5 class="card-title"><?php echo "" . $nom[$i] ?></h5>
+                                    <p class="card-text"><?php echo "" . $desc[$i] ?></p>
+                                    <a href="shop.php" style="color:goldenrod">Comprar Nuevamente </a>
+
+                                    <label class="card-text"><small class="text-muted"><span style="color:brown"><?php echo "$" . $sub[$i] ?></span></small></label>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <?php  }?>
+                <?php  } ?>
             </div>
-                
+
             <?php
 
             ?>

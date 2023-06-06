@@ -79,7 +79,7 @@ if (!isset($user_id)) {
                 $order_query1 = $orders->find(array('user_id' => new MongoDB\BSON\ObjectId($user_id)));
                 foreach ($order_query1 as $fetch_orders1) {
             ?>
-                    <div class="">
+                    <div>
                         <div class="card">
                             <div class="card-header " style="background-color: #d3d3d3 ;">
                                 <div class="row">

@@ -89,36 +89,44 @@ if (isset($_GET['delete'])) {
                 $select_orders1 = $orders->find();
                 foreach ($select_orders1 as $fetch_orders1) {
             ?>
-
                     <div class="col-xl-4 col-md-6 col-sm-6">
-                        <div class="card crypto-card-3 pull-up">
-                            <div class="card-content">
-                                <div class="card-body">
-
-                                    <p> ID de Usuario: <span><?php echo $fetch_orders1['user_id']; ?></span> </p>
-                                    <p> Pedido a: <span><?php echo $fetch_orders1['placed_on']; ?></span> </p>
-                                    <p> Nombre de usuario:<span><?php echo $fetch_orders1['name']; ?></span> </p>
-                                    <p> Teléfono: <span><?php echo $fetch_orders1['number']; ?></span> </p>
-                                    <p> Correo: <span><?php echo $fetch_orders1['email']; ?></span> </p>
-                                    <p> Dirección: <span><?php echo $fetch_orders1['address']; ?></span> </p>
-                                    <p> Total de platillos: <span><?php echo $fetch_orders1['total_products']; ?></span> </p>
-                                    <p> Cuenta total: <span>$<?php echo $fetch_orders1['total_price']; ?>/-</span> </p>
-                                    <p> Método de pago: <span><?php echo $fetch_orders1['method']; ?></span> </p>
-                                    <form action="" method="post">
-                                        <input type="hidden" name="order_id" value="<?php echo $fetch_orders1['_id']; ?>">
-                                        <select name="update_payment">
-                                            <option value="" selected disabled><?php echo $fetch_orders1['payment_status']; ?></option>
-                                            <option value="pending">Pendiente</option>
-                                            <option value="completed">Completado</option>
-                                        </select>
-                                        <input type="submit" value="Actualizar" name="update_order" class="option-btn">
-                                        <a href="admin_orders.php?delete=<?php echo $fetch_orders1['_id']; ?>" onclick="return confirm('¿Desea eliminar esta orden?');" class="delete-btn">Eliminar</a>
-                                    </form>
+                        <div class="card">
+                            <div class="card-header " style="background-color: #d3d3d3 ;">
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <b>N° Pedido:<br><span style="text-align:end; color:green;"></b><?php echo $fetch_orders1['_id']; ?></span>
+                                    </div>
                                 </div>
+
+                            </div>
+
+                            <div class="card-body" style="width: 460px;max-height:550px ;">
+                                <h5 class="card-title">Pedido el: <span><?php echo $fetch_orders1['placed_on']; ?></span></h5>
+                                <p> ID de Usuario: <span><?php echo $fetch_orders1['user_id']; ?></span> </p>
+                                <p class="card-text"> Pedido a: <span><?php echo $fetch_orders1['placed_on']; ?></span> </p>
+                                <p class="card-text"> Cliente: <span><?php echo $fetch_orders1['name']; ?></span> </p>
+                                <p class="card-text"> Teléfono: <span><?php echo $fetch_orders1['number']; ?></span> </p>
+                                <p class="card-text"> Correo: <span><?php echo $fetch_orders1['email']; ?></span> </p>
+                                <p class="card-text"> Dirección: <span><?php echo $fetch_orders1['address']; ?></span> </p>
+                                <p class="card-text"> Total de platillos: <span><?php echo $fetch_orders1['total_products']; ?></span> </p>
+                                <p class="card-text"> Cuenta total: <span>$<?php echo $fetch_orders1['total_price']; ?>/-</span> </p>
+                                <p class="card-text"> Método de pago: <span><?php echo $fetch_orders1['method']; ?></span> </p>
+                                <br>
+                                <p class="card-text"><b> Actualizar estado: </b></p>
+                                <form action="" method="post">
+                                    <input type="hidden" name="order_id" value="<?php echo $fetch_orders1['_id']; ?>">
+                                    <select name="update_payment">
+                                        <option value="" selected disabled><?php echo $fetch_orders1['payment_status']; ?></option>
+                                        <option value="pending">Pendiente</option>
+                                        <option value="completed">Completado</option>
+                                    </select>
+                                    <input type="submit" value="Actualizar" name="update_order" class="option-btn" >
+                                    <hr>
+                                    <a href="admin_orders.php?delete=<?php echo $fetch_orders1['_id']; ?>" onclick="return confirm('¿Desea eliminar esta orden?');" class="delete-btn" >Eliminar</a>
+                                </form>
                             </div>
                         </div>
                     </div>
-
             <?php
                 }
             } else {
