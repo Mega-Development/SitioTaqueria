@@ -1,6 +1,6 @@
 <?php 
     require 'vendor/autoload.php';
-    include 'config1.php';
+    include 'db_connection.php';
     session_start();
     $user_id = $_SESSION['user_id'];
 
@@ -74,7 +74,7 @@ $pdf->setY(30);$pdf->setX(10);
 $pdf->Cell(5,$textypos,"EMPRESA:");
 $pdf->SetFont('Arial','',10);    
 $pdf->setY(35);$pdf->setX(10);
-$pdf->Cell(5,$textypos,"El Rincon Del Taco");
+$pdf->Cell(5,$textypos,utf8_decode("El Rincón del Taco"));
 $pdf->setY(40);$pdf->setX(10);
 $pdf->Cell(5,$textypos,"Colonia IVU 20 Calle Pte");
 $pdf->setY(45);$pdf->setX(10);

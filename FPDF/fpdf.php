@@ -359,7 +359,7 @@ function AddPage($orientation='', $size='', $rotation=0)
 
 function Header()
 {
-	// $this->Image('Logo.PNG',150,5,50);
+	$this->Image('logo.jpg',130,8,65);
 
 	$this->SetFont('Arial','B',16);
 
@@ -375,7 +375,7 @@ function Footer()
 
 	$this->SetFont('Arial','I',8);
 
-	$this->Cell(0,10,'Page '.$this->PageNo().'El Rincón del Taco',0,0,'C');
+	$this->Cell(0,10,utf8_decode('Página ').$this->PageNo().utf8_decode(' - Taquería El Rincón del Taco'),0,0,'C');
 }
 
 function PageNo()
@@ -1002,7 +1002,7 @@ function Output($dest='', $name='', $isUTF8=false)
 	if($dest=='')
 		$dest = 'I';
 	if($name=='')
-		$name = 'doc.pdf';
+		$name = 'factura-'.date("d/M/Y").'.pdf';
 	switch(strtoupper($dest))
 	{
 		case 'I':
