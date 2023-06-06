@@ -68,9 +68,9 @@ if(isset($_POST['send'])){
 
 <body class="main-layout">
     <!-- loader  -->
-    <!-- <div class="loader_bg">
-        <div class="loader"><img src="images/loading.gif" alt="" /></div>
-    </div> -->
+    <div class="loader_bg" style="background-color: white;">
+        <div class="loader"><img src="images/loader_4.gif" alt="" /></div>
+    </div>
 
     <div class="wrapper">
         <div id="content">

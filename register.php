@@ -72,7 +72,7 @@ if (isset($_POST['submit'])) {
     ?>
     <!-- loader  -->
     <div class="loader_bg" style="margin-top: 100px;">
-        <div class="loader"><img src="images/loading.gif" alt="" /></div>
+        <div class="loader"><img src="images/loader_2.gif" alt="" /></div>
     </div>
     <div class="wrapper">
         <!-- end loader -->

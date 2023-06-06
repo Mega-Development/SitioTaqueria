@@ -31,16 +31,16 @@ if (isset($_POST['order_btn'])) {
 
     $filter = array('user_id' => new MongoDB\BSON\ObjectId($user_id));
     $conteo = $cart->count($filter);
-    $i=0;
+    $i = 0;
     if ($conteo > 0) {
 
 
         $cart_query1 = $cart->find(array('user_id' => new MongoDB\BSON\ObjectId($user_id)));
         foreach ($cart_query1 as $cart_item1) {
 
-            if ($i>0) {
-                $cart_products[] = ','.$cart_item1['name'] . ' • ' . $cart_item1['quantity'];
-            }else{
+            if ($i > 0) {
+                $cart_products[] = ',' . $cart_item1['name'] . ' • ' . $cart_item1['quantity'];
+            } else {
                 $cart_products[] = $cart_item1['name'] . ' • ' . $cart_item1['quantity'];
             }
             $sub_total = ($cart_item1['price'] * $cart_item1['quantity']);
@@ -49,7 +49,7 @@ if (isset($_POST['order_btn'])) {
         }
     }
 
-        $total_products = implode('', $cart_products);
+    $total_products = implode('', $cart_products);
 
 
     $filter = array('name' => $name1, 'number' => $number1, 'email' => $email1, 'method' => $method1, 'address' => $address1, 'total_products' => $total_products, 'total_price' => $cart_total);
@@ -108,6 +108,10 @@ if (isset($_POST['order_btn'])) {
 </head>
 
 <body>
+    <!-- loader  -->
+    <div class="loader_bg" style="background-color: white;">
+        <div class="loader"><img src="images/loader_4.gif" alt="" /></div>
+    </div>
 
     <?php include 'header.php'; ?>
     <div class="about">
@@ -122,85 +126,85 @@ if (isset($_POST['order_btn'])) {
     </div>
 
     <div class="container">
-    <div class="row">
-        <div class="col-8">
-        <form action="" method="post">
-            <h3>Realice su pedido</h3>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label class="lb-datos">Nombre:</label>
-                    <input type="text" class="form-control" name="name" required placeholder="Ingresa tu nombre">
-                </div>
-                <div class="form-group col-md-6">
-                    <label class="lb-datos">Celular:</label>
-                    <input type="text" class="form-control" name="number" required placeholder="Ingresa tu número">
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label class="lb-datos">Correo Electrónico:</label>
-                    <input class="form-control" type="email" name="email" required placeholder="Ingresa tu correo">
-                </div>
-                <div class="form-group col-md-6">
-                    <label class="lb-datos">Método de pago:</label>
-                    <select name="method" class="form-control custom-select  alto" style="height:40px ;">
-                        <option value="cash on delivery">Contra entrega</option>
-                        <option value="credit card">Tarjeta de crédito/débito</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label class="lb-datos">Departamento:</label>
-                    <input class="form-control" type="text" name="state" required placeholder="Departamento">
-                </div>
-                <div class="form-group col-md-6">
-                    <label class="lb-datos">Municipio:</label>
-                    <input class="form-control" type="text" name="city" required placeholder="Municipio">
-                </div>
-            </div>
+        <div class="row">
+            <div class="col-8">
+                <form action="" method="post">
+                    <h3>Realice su pedido</h3>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label class="lb-datos">Nombre:</label>
+                            <input type="text" class="form-control" name="name" required placeholder="Ingresa tu nombre">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="lb-datos">Celular:</label>
+                            <input type="text" class="form-control" name="number" required placeholder="Ingresa tu número">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label class="lb-datos">Correo Electrónico:</label>
+                            <input class="form-control" type="email" name="email" required placeholder="Ingresa tu correo">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="lb-datos">Método de pago:</label>
+                            <select name="method" class="form-control custom-select  alto" style="height:40px ;">
+                                <option value="cash on delivery">Contra entrega</option>
+                                <option value="credit card">Tarjeta de crédito/débito</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label class="lb-datos">Departamento:</label>
+                            <input class="form-control" type="text" name="state" required placeholder="Departamento">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="lb-datos">Municipio:</label>
+                            <input class="form-control" type="text" name="city" required placeholder="Municipio">
+                        </div>
+                    </div>
 
-            <div class="form-group">
-                <label class="lb-datos">Dirección:</label>
-                <input type="text" class="form-control" name="flat" required placeholder="Ingrese su dirección">
+                    <div class="form-group">
+                        <label class="lb-datos">Dirección:</label>
+                        <input type="text" class="form-control" name="flat" required placeholder="Ingrese su dirección">
+                    </div>
+                    <input type="submit" value="Pedir" class="btn" name="order_btn"><br>
+                </form>
             </div>
-            <input type="submit" value="Pedir" class="btn" name="order_btn"><br>
-        </form>
-        </div>
-        <div class="col-4">
-        <?php
-                    $grand_total = 0;
-                    $filter = array('user_id' => new MongoDB\BSON\ObjectId($user_id));
-                    $doc = $cart->count($filter);
-                    echo "<h2>Cuenta a pagar</h2>";
-                    if ($doc > 0) {
-                        $cart_query1 = $cart->find(array('user_id' => new MongoDB\BSON\ObjectId($user_id)));
-                        foreach ($cart_query1 as $fetch_cart1) {
-                            $total_price = ($fetch_cart1['price'] * $fetch_cart1['quantity']);
-                            $grand_total += $total_price;
-                    ?>
-                            <ul class="list-group list-group-flush">
-                                <li class=""style="font-size: 15px ;"><?php echo $fetch_cart1['name']; ?> (<?php echo '$' . $fetch_cart1['price'] . ' X ' . $fetch_cart1['quantity']; ?>)</li>
-                                <hr style="height:1px;border:none;color:#333;background-color:#333;">
-                            </ul>
-                    <?php
-                        }
-                    } else {
-                        echo '<p class="empty">Tu carrito de compra esta sólo</p>';
+            <div class="col-4">
+                <?php
+                $grand_total = 0;
+                $filter = array('user_id' => new MongoDB\BSON\ObjectId($user_id));
+                $doc = $cart->count($filter);
+                echo "<h2>Cuenta a pagar</h2>";
+                if ($doc > 0) {
+                    $cart_query1 = $cart->find(array('user_id' => new MongoDB\BSON\ObjectId($user_id)));
+                    foreach ($cart_query1 as $fetch_cart1) {
+                        $total_price = ($fetch_cart1['price'] * $fetch_cart1['quantity']);
+                        $grand_total += $total_price;
+                ?>
+                        <ul class="list-group list-group-flush">
+                            <li class="" style="font-size: 15px ;"><?php echo $fetch_cart1['name']; ?> (<?php echo '$' . $fetch_cart1['price'] . ' X ' . $fetch_cart1['quantity']; ?>)</li>
+                            <hr style="height:1px;border:none;color:#333;background-color:#333;">
+                        </ul>
+                <?php
                     }
-                    ?>
+                } else {
+                    echo '<p class="empty">Tu carrito de compra esta sólo</p>';
+                }
+                ?>
                 <div class="container">
                     <div class="row">
-                            <div class="grand-total" style="font-size: 18px ;color:tomato"> Total a pagar: <span>$<?php echo $grand_total; ?></span> </div>
-                        </div>
-                    </div>    
+                        <div class="grand-total" style="font-size: 18px ;color:tomato"> Total a pagar: <span>$<?php echo $grand_total; ?></span> </div>
+                    </div>
                 </div>
+            </div>
         </div>
     </div>
 
     </div>
 
-    
+
 
 
     </section>

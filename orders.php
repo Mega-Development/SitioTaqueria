@@ -44,7 +44,10 @@ if (!isset($user_id)) {
 </head>
 
 <body>
-
+    <!-- loader  -->
+    <div class="loader_bg" style="background-color: white;">
+        <div class="loader"><img src="images/loader_4.gif" alt="" /></div>
+    </div>
     <?php include 'header.php'; ?>
     <!-- about -->
     <div class="about">

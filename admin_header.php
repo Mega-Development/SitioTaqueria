@@ -31,7 +31,8 @@ if (isset($message)) {
         <div class="flex">
 
             <nav class="navbar">
-                <a class="logo" href="admin_page.php"><img src="./images/Logo.png" width="125px" alt="#"></a>
+                <!-- <a class="logo" href="admin_page.php"><img src="./images/Logo.png" width="125px" alt="#"></a> -->
+                <a class="logo" href="home.php"><img src="./images/Logo_Horizontal.png" width="220px"  alt="#" /></a>
                 <a href="admin_page.php">Inicio</a>
                 <a href="admin_products.php">Menú</a>
                 <a href="admin_orders.php">Órdenes</a>

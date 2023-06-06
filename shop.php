@@ -36,7 +36,10 @@ if (isset($_POST['add_to_cart'])) {
 <!DOCTYPE html>
 <html lang="en">
 
-
+    <!-- loader  -->
+    <div class="loader_bg" style="background-color: white;">
+        <div class="loader"><img src="images/loader_4.gif" alt="" /></div>
+    </div>
     <?php include 'header.php'; ?>
 
 
